@@ -118,3 +118,25 @@ The total maximum score for each model, combining both benchmarks, was:
 60 points (Benchmark #1) + 15 points (Benchmark #2) = 75 points.
 
 ### Results
+
+| RESPONDENT_ID | TOTAL_BENCH_1 | TOTAL_BENCH_2 | TOTAL_SUM |
+| ------------- | ------------- | ------------- | ----- |
+| 1             | 173           | 140           | 313   |
+| 2             | 160           | 168           | 328   |
+| 3             | 171           | 176           | 347   |
+| 4             | 176           | 154           | 330   |
+| 5             | 129           | 156           | 285   |
+| 6             | 187           | 179           | 366   |
+| 7             | 154           | 156           | 310   |
+| 8             | 128           | 196           | 324   |
+| 9             | 207           | 195           | 402   |
+| 10            | 120           | 115           | 235   |
+| 11            | 140           | 134           | 274   |
+| **AVG_TOTAL** | 159           | 161           | 319   |
+
+| MODELS           | BENCH_1 | BENCH_2 | TOTAL | AVG_PER_RESP | AVG_PER_RESP_BENCH_1 | AVG_PER_RESP_BENCH_2 |
+| ---------------- | ------- | ------- | ----- | ------------ | -------------------- | -------------------- |
+| GPT4o/ GPT Turbo | 462     | 326     | 788   | 71.64        | 42                   | 29.64                |
+| GPT3.5           | 463     | 501     | 964   | 87.64        | 42.09                | 45.55                |
+| Claude 3 Opus    | 412     | 560     | 972   | 88.36        | 37.45                | 50.91                |
+| Lliama 3         | 408     | 382     | 790   | 71.82        | 37.09                | 34.73                |

@@ -1,0 +1,50 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Встановлюємо відступи для зовнішнього впорядкованого списку */
+ol {
+  margin-left: 30px;
+}
+
+ol > li {
+  margin-bottom: 15px; /* Відступ між зовнішніми пунктами списку */
+}
+
+/* Скидаємо відступи для внутрішніх списків */
+ol > li > ol,
+ol > li > ul,
+ul > li > ol,
+ul > li > ul {
+  margin-bottom: 0; /* Прибираємо відступи між внутрішніми пунктами списку */
+}
+
+/* Стилі для таблиць */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
