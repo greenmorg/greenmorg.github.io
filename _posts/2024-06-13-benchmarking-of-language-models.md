@@ -141,7 +141,7 @@ The total maximum score for each model, combining both benchmarks, was:
 <div class="content-with-image">
   <div class="text-content">
    <h2>Results</h2>
-   The table below presents the benchmarks results involving various respondents and models. The first table lists individual respondent scores across two benchmarks (<b>TOTAL_BENCH_1</b> and <b>TOTAL_BENCH_2</b>) along with their total cumulative scores (<b>TOTAL_SUM</b>). The second table provides a summary of the performance of different models across the same benchmarks, including total scores, average scores per respondent, and specific averages for each benchmark. 
+   The table below presents the benchmarks results involving various respondents and models. The first table lists individual respondent scores across two benchmarks (<b>TOTAL BENCH 1</b> and <b>TOTAL BENCH 2</b>) along with their total cumulative scores (<b>TOTAL SUM</b>). The second table provides a summary of the performance of different models across the same benchmarks, including total scores, average scores per respondent, and specific averages for each benchmark. 
   </div>
   <div class="image-content">
         <svg width="208" height="287" viewBox="0 0 416 574" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -182,7 +182,7 @@ The total maximum score for each model, combining both benchmarks, was:
 </div>
 <br>
  
-| RESPONDENT_ID | TOTAL_BENCH_1 | TOTAL_BENCH_2 | TOTAL_SUM |
+| RESPONDENT ID | TOTAL BENCH 1 | TOTAL BENCH 2 | TOTAL SUM |
 | ------------- | ------------- | ------------- | ----- |
 | 1             | 173           | 140           | 313   |
 | 2             | 160           | 168           | 328   |
@@ -203,17 +203,17 @@ The total maximum score for each model, combining both benchmarks, was:
     <thead>
       <tr>
         <th>MODELS</th>
-        <th>BENCH_1</th>
-        <th>BENCH_2</th>
+        <th>BENCH 1</th>
+        <th>BENCH 2</th>
         <th>TOTAL</th>
-        <th>AVG_PER_RESP</th>
-        <th>AVG_PER_RESP_BENCH_1</th>
-        <th>AVG_PER_RESP_BENCH_2</th>
+        <th>AVG PER RESP</th>
+        <th>AVG PER RESP BENCH 1</th>
+        <th>AVG PER RESP BENCH 2</th>
       </tr>
     </thead>
     <tbody>
       <tr style="background-color: rgb(189, 215, 238);">
-        <td>GPT4o/ GPT Turbo</td>
+        <td>GPT4o/ GPT TURBO</td>
         <td>462</td>
         <td>326</td>
         <td>788</td>
@@ -268,4 +268,53 @@ The total maximum score for each model, combining both benchmarks, was:
   }
 </style>
 
-* It should be noted separately that for bencmark #1 we used finetuned llama-3 and gpt-3.5, while for bencmark #2 we used general ones
+<div class="styled-table">
+  <table>
+    <thead>
+      <tr>
+        <th>MODELS</th>
+        <th>PRICE PER 1000 TOKENS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background-color: rgb(189, 215, 238);">
+        <td>GPT4o/ GPT TURBO</td>
+        <td>0.01$**</td>
+      </tr>
+      <tr style="background-color: rgb(198, 224, 180);">
+        <td>GPT3.5</td>
+        <td>0.001$</td>
+      </tr>
+      <tr style="background-color: rgb(248, 203, 173);">
+        <td>Claude 3 Opus</td>
+        <td>0.045$</td>
+      </tr>
+      <tr style="background-color: rgb(255, 230, 153);">
+        <td>Llama 3</td>
+        <td>0.00586$</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<style>
+  .styled-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .styled-table th, .styled-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  .styled-table th {
+    background-color: #f2f2f2;
+  }
+</style>
+
+<div>
+* It should be noted separately that for bencmark #1 we used finetuned llama-3 and gpt-3.5, while for bencmark #2 we used general ones.
+<br>
+** Price is avarage between input and ouput tokens.
+</div>
