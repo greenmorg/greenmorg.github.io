@@ -5,9 +5,30 @@ date:   2024-06-13 14:07:47 +0300
 categories: benchmarking llm RnD
 ---
 
-## Introduction
-
-This research aimed to benchmark the performance of various language models (LLMs) in the context of GreenM's operations. Specifically, we evaluated the effectiveness of these models in analyzing client feedback in healthcare services and responding to inquiries about corporate documents. The goal was to assess the adequacy, integrity, and usefulness of the models' responses, which would contribute to a more objective human evaluation of their performance.
+<div class="content-with-image">
+  <div class="text-content">
+   <h2>Introduction</h2>
+    This research aimed to benchmark the performance of various language models (LLMs) in the context of GreenM's operations. Specifically, we evaluated the effectiveness of these models in analyzing client feedback in healthcare services and responding to inquiries about corporate documents. The goal was to assess the adequacy, integrity, and usefulness of the models' responses, which would contribute to a more objective human evaluation of their performance. 
+  </div>
+  <div class="image-content">
+    <svg width="311.5" height="311.5" viewBox="0 0 623 623" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M431.469 401.037L472.226 357.265L369.49 114.147L240.817 82.1474L140.964 384.214L267.04 460.6L431.469 401.037Z" fill="#020000"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M263.456 211.199C251.551 211.507 241.634 202.042 241.336 190.096C241.044 178.249 250.48 168.284 262.39 167.982C274.197 167.678 284.115 177.139 284.412 188.992C284.705 200.937 275.269 210.897 263.462 211.2L263.456 211.199ZM263.022 196.119C259.536 196.207 256.662 193.463 256.572 189.97C256.487 186.57 259.224 183.684 262.71 183.591C266.098 183.503 268.972 186.247 269.057 189.647C269.141 193.144 266.405 196.03 263.016 196.118L263.022 196.119Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M349.42 206.455C345.723 212.616 337.701 214.694 331.478 210.941C325.342 207.237 323.325 199.107 327.022 192.942C330.767 186.695 338.822 184.751 344.964 188.456C351.186 192.208 353.164 200.209 349.42 206.455ZM342.312 202.601C340.914 204.93 337.906 205.615 335.587 204.21C333.348 202.857 332.538 199.878 333.936 197.544C335.334 195.215 338.342 194.53 340.581 195.883C342.901 197.283 343.715 200.267 342.312 202.596L342.312 202.601Z" fill="white"/>
+      <path d="M90.335 313.058C132.387 277.235 169.767 250.758 213.377 239.855" stroke="#020000" stroke-width="12.46" stroke-miterlimit="10"/>
+      <path d="M452.5 238.61C452.5 238.61 507 245.61 485.5 305.11" stroke="#020000" stroke-width="12.46" stroke-miterlimit="10"/>
+      <ellipse cx="294.368" cy="523.32" rx="163.538" ry="21.805" fill="black" fill-opacity="0.1"/>
+      <path d="M241.362 412.555L216.441 521.919" stroke="#020000" stroke-width="12.46" stroke-miterlimit="10"/>
+      <path d="M366.441 405.145L364.954 514.51" stroke="#020000" stroke-width="12.46" stroke-miterlimit="10"/>
+      <circle cx="377.649" cy="211.259" r="81" transform="rotate(-46.5019 377.649 211.259)" fill="#020000" stroke="#BFE5FB" stroke-width="20"/>
+      <path d="M484.375 315.978L455.722 288.789" stroke="#BFE5FB" stroke-width="35" stroke-linecap="round"/>
+      <path d="M457.173 290.166L439.763 273.646" stroke="#BFE5FB" stroke-width="17"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M424.948 253.814C401.392 279.961 360.929 281.966 334.717 258.305C308.725 234.834 306.558 194.337 330.136 168.192C353.502 142.265 393.955 140.248 419.97 163.721C446.17 187.392 448.326 227.877 424.96 253.804L424.948 253.814ZM391.736 224.071C384.835 231.721 373.107 232.3 365.436 225.39C357.975 218.656 357.356 206.92 364.247 199.257C370.951 191.815 382.678 191.236 390.139 197.969C397.809 204.902 398.428 216.639 391.724 224.081L391.736 224.071Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M443.441 224.61C444.521 219.798 445.09 214.793 445.09 209.655C445.09 172.075 414.625 141.61 377.045 141.61C339.465 141.61 309 172.075 309 209.655C309 214.793 309.569 219.798 310.649 224.61C317.463 194.224 344.603 171.52 377.045 171.52C409.487 171.52 436.627 194.224 443.441 224.61Z" fill="black" fill-opacity="0.1"/>
+      <path d="M485.5 305.11C494.361 280.587 490.313 264.982 482.49 255.11" stroke="#020000" stroke-width="12.46" stroke-miterlimit="10"/>
+    </svg>
+  </div>
+</div>
 
 ## Objectives
 
@@ -31,7 +52,7 @@ Participants found an example of feedback along with the analysis results from f
 - The automatically generated response to the feedback content,
 - A summary providing concise information about the main content of the comment and its level of criticality.
 
-**Methodology for evaluating feedback analysis**
+#### Methodology for evaluating feedback analysis
 
 A scoring system ranging from 0 to 3 was used to evaluate the quality of the feedback analysis based on five parameters:
 
@@ -67,17 +88,17 @@ A scoring system ranging from 0 to 3 was used to evaluate the quality of the fee
    - **2**: Summary was mostly clear and concise but might have missed minor details.
    - **3**: Summary was comprehensive, clear, concise, and included all required elements.
 
-**Maximum Score for Benchmark #1**
+#### Maximum Score for Benchmark #1
 
 Each question had a maximum score of 3, and there were 20 questions. Therefore, the maximum score for each model in Benchmark #1 was:
 
-20 questions * 3 points = 60 points.
+**20 questions * 3 points = 60 points.**
 
 ### Benchmark #2
 
 For the second benchmark, participants found the answers of four selected language models about GreenM company and staff management (regulations, procedures, benefits). The informational resource for answers evaluation was the GreenM Handbook.
 
-**Methodology for Evaluating Answers**
+#### Methodology for Evaluating Answers
 
 For the five answers, a scoring system ranging from 0 to 3 was used to evaluate the quality of the answer based on four parameters:
 
@@ -105,20 +126,62 @@ For the five answers, a scoring system ranging from 0 to 3 was used to evaluate 
    - **2**: The model responded with less empathy or kindness than expected but in a polite way.
    - **3**: The model responded appropriately to the user's emotional state by providing empathy or adequate emotional feedback.
 
-**Maximum Score for Benchmark #2**
+#### Maximum Score for Benchmark #2
 
-Each question had a maximum score of 3, and there were 5 questions. Therefore, the maximum score for each model in Benchmark #2 was:
+Each question had a maximum score of 3, there were 4 parameters, and there were 5 questions. Therefore, the maximum score for each model in Benchmark #2 was:
 
-5 questions * 3 points = 15 points.
+**4 parameters * 3 points * 5 questions = 60 points.**
 
 ### Total Maximum Score
 
 The total maximum score for each model, combining both benchmarks, was:
 
-60 points (Benchmark #1) + 15 points (Benchmark #2) = 75 points.
+**60 points (Benchmark #1) + 60 points (Benchmark #2) = 120 points.**
 
-### Results
-
+<div class="content-with-image">
+  <div class="text-content">
+   <h2>Results</h2>
+   The table below presents the benchmarks results involving various respondents and models. The first table lists individual respondent scores across two benchmarks (<b>TOTAL_BENCH_1</b> and <b>TOTAL_BENCH_2</b>) along with their total cumulative scores (<b>TOTAL_SUM</b>). The second table provides a summary of the performance of different models across the same benchmarks, including total scores, average scores per respondent, and specific averages for each benchmark. 
+  </div>
+  <div class="image-content">
+        <svg width="208" height="287" viewBox="0 0 416 574" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M368.833 483.558L386.193 457.258L311.602 339.89L241.949 334.487L216.413 500.158L288.588 528.852L368.833 483.558Z" fill="#020000"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M281.58 399.453C275.421 400.652 269.442 396.599 268.245 390.417C267.059 384.287 271.094 378.286 277.256 377.09C283.365 375.902 289.343 379.953 290.532 386.086C291.726 392.267 287.692 398.266 281.583 399.453L281.58 399.453ZM280.039 391.655C278.235 392.005 276.502 390.83 276.151 389.023C275.81 387.263 276.98 385.525 278.784 385.173C280.537 384.831 282.269 386.007 282.61 387.766C282.959 389.576 281.789 391.314 280.036 391.655L280.039 391.655Z" fill="white"/>
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M309.225 389.607C307.841 393.13 303.854 394.91 300.293 393.503C296.782 392.113 295.024 388.065 296.408 384.538C297.809 380.966 301.825 379.253 305.339 380.642C308.9 382.05 310.626 386.034 309.225 389.607ZM305.195 388.224C304.672 389.556 303.169 390.175 301.841 389.647C300.559 389.139 299.879 387.662 300.402 386.327C300.925 384.994 302.428 384.376 303.71 384.884C305.037 385.409 305.721 386.889 305.195 388.221L305.195 388.224Z" fill="white"/>
+      <path d="M199.505 481.405C209.905 454.22 220.504 432.536 237.917 416.481" stroke="#020000" stroke-width="6.5651" stroke-miterlimit="10"/>
+      <path d="M352.063 408.58L414.212 439.647" stroke="#020000" stroke-width="6.5651" stroke-miterlimit="10"/>
+      <ellipse cx="294.321" cy="558.936" rx="86.1669" ry="11.4889" fill="black" fill-opacity="0.1"/>
+      <path d="M266.393 500.574L253.263 558.198" stroke="#020000" stroke-width="6.5651" stroke-miterlimit="10"/>
+      <path d="M332.296 496.67L331.513 554.294" stroke="#020000" stroke-width="6.5651" stroke-miterlimit="10"/>
+      <path d="M191.638 86.4021L221.781 91.3939L278.486 266.606L190.857 312.737L121.563 256.72L191.638 86.4021Z" fill="#020000"/>
+      <path d="M183.829 175.133C184.141 173.214 185.944 171.919 187.849 172.233C189.758 172.546 191.047 174.36 190.734 176.275L198.581 177.574C199.607 171.299 195.383 165.373 189.142 164.341C182.9 163.308 177.005 167.555 175.979 173.83L183.825 175.129L183.829 175.133Z" fill="white"/>
+      <path d="M213.024 179.963C213.336 178.044 215.14 176.749 217.045 177.063C218.95 177.377 220.242 179.19 219.93 181.105L227.776 182.404C228.803 176.129 224.579 170.204 218.337 169.171C212.095 168.139 206.2 172.385 205.174 178.661L213.02 179.96L213.024 179.963Z" fill="white"/>
+      <path d="M163.104 273.16L127.663 331.004" stroke="#020000" stroke-width="6.5651" stroke-miterlimit="10"/>
+      <path d="M220.887 273.909L259.966 336.192" stroke="#020000" stroke-width="6.5651" stroke-miterlimit="10"/>
+      <path d="M243.92 183.401L287.082 124.972" stroke="#020000" stroke-width="6.5651" stroke-miterlimit="10"/>
+      <path d="M117.141 130.324L158.718 188.401" stroke="#020000" stroke-width="6.5651" stroke-miterlimit="10"/>
+      <ellipse cx="96.2145" cy="558.415" rx="96.2145" ry="14.6768" fill="black" fill-opacity="0.1"/>
+      <path d="M92.8684 315.906L152.855 337.434L185.593 532.926L39.9413 510.113L15.9373 477.067L92.8684 315.906Z" fill="#020000"/>
+      <path d="M124.846 390.833C125.62 392.466 124.926 394.418 123.298 395.197C121.67 395.975 119.726 395.281 118.952 393.648L112.255 396.847C114.784 402.189 121.151 404.457 126.476 401.913C131.801 399.37 134.068 392.977 131.54 387.636L124.843 390.836L124.846 390.833Z" fill="white"/>
+      <path d="M95.4677 392.338C94.4299 393.818 92.3948 394.174 90.9242 393.135C89.4511 392.095 89.0978 390.053 90.1352 388.576L84.0747 384.3C80.6802 389.141 81.8361 395.823 86.6558 399.224C91.4755 402.625 98.136 401.458 101.53 396.617L95.4699 392.341L95.4673 392.341L95.4677 392.338Z" fill="white"/>
+      <path d="M9.24605 425.534C13.7614 403.479 35.2607 389.202 57.2657 393.651C79.2707 398.1 93.4523 419.586 88.937 441.641" stroke="#020000" stroke-width="6.5651" stroke-miterlimit="10"/>
+      <path d="M67.5861 479.663L56.9814 555.409" stroke="#020000" stroke-width="6.5651" stroke-miterlimit="10"/>
+      <path d="M126.338 479.679L137.187 555.393" stroke="#020000" stroke-width="6.5651" stroke-miterlimit="10"/>
+      <path d="M140.255 412.558C145.09 408.438 150.966 405.436 157.586 404.028C179.185 399.434 200.49 413.565 205.174 435.587" stroke="#020000" stroke-width="6.5651" stroke-miterlimit="10"/>
+      <path d="M273.948 106.083L308.181 111.259L306.661 121.311C306.034 125.453 302.162 128.308 298.02 127.682L278.8 124.776C274.657 124.15 271.802 120.278 272.428 116.135L273.948 106.083Z" fill="#919191"/>
+      <path d="M280.823 125.082L295.995 127.376L295.979 127.485C295.575 130.156 293.076 131.998 290.405 131.594L284.917 130.765C282.245 130.361 280.403 127.862 280.807 125.191L280.823 125.082Z" fill="#E8ECF3"/>
+      <path d="M341.407 53.4706C344.852 30.6861 329.08 9.42891 306.222 6.15842C283.762 2.94309 262.728 18.561 259.302 40.9919C257.774 50.9978 259.952 60.7101 264.811 68.7389C270.828 78.6801 273.001 90.4783 271.264 101.967C270.961 103.971 272.34 105.838 274.341 106.14L307.789 111.198C309.793 111.501 311.66 110.122 311.962 108.121C313.721 96.4867 319.553 85.9064 328.268 77.9995C335.101 71.8029 339.92 63.3021 341.407 53.4706Z" fill="url(#paint0_radial_295_114)"/>
+      <defs>
+        <radialGradient id="paint0_radial_295_114" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(298.811 57.4383) rotate(98.598) scale(51.8129 41.5239)">
+          <stop stop-color="#C9E5F2" stop-opacity="0"/>
+          <stop offset="1" stop-color="#DBF1FB"/>
+        </radialGradient>
+      </defs>
+    </svg>
+  </div>
+</div>
+<br>
+ 
 | RESPONDENT_ID | TOTAL_BENCH_1 | TOTAL_BENCH_2 | TOTAL_SUM |
 | ------------- | ------------- | ------------- | ----- |
 | 1             | 173           | 140           | 313   |
@@ -134,9 +197,75 @@ The total maximum score for each model, combining both benchmarks, was:
 | 11            | 140           | 134           | 274   |
 | **AVG_TOTAL** | 159           | 161           | 319   |
 
-| MODELS           | BENCH_1 | BENCH_2 | TOTAL | AVG_PER_RESP | AVG_PER_RESP_BENCH_1 | AVG_PER_RESP_BENCH_2 |
-| ---------------- | ------- | ------- | ----- | ------------ | -------------------- | -------------------- |
-| GPT4o/ GPT Turbo | 462     | 326     | 788   | 71.64        | 42                   | 29.64                |
-| GPT3.5           | 463     | 501     | 964   | 87.64        | 42.09                | 45.55                |
-| Claude 3 Opus    | 412     | 560     | 972   | 88.36        | 37.45                | 50.91                |
-| Lliama 3         | 408     | 382     | 790   | 71.82        | 37.09                | 34.73                |
+
+<div class="styled-table">
+  <table>
+    <thead>
+      <tr>
+        <th>MODELS</th>
+        <th>BENCH_1</th>
+        <th>BENCH_2</th>
+        <th>TOTAL</th>
+        <th>AVG_PER_RESP</th>
+        <th>AVG_PER_RESP_BENCH_1</th>
+        <th>AVG_PER_RESP_BENCH_2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background-color: rgb(189, 215, 238);">
+        <td>GPT4o/ GPT Turbo</td>
+        <td>462</td>
+        <td>326</td>
+        <td>788</td>
+        <td>71.64</td>
+        <td>42</td>
+        <td>29.64</td>
+      </tr>
+      <tr style="background-color: rgb(198, 224, 180);">
+        <td>GPT3.5</td>
+        <td>463</td>
+        <td>501</td>
+        <td>964</td>
+        <td>87.64</td>
+        <td>42.09</td>
+        <td>45.55</td>
+      </tr>
+      <tr style="background-color: rgb(248, 203, 173);">
+        <td>Claude 3 Opus</td>
+        <td>412</td>
+        <td>560</td>
+        <td>972</td>
+        <td>88.36</td>
+        <td>37.45</td>
+        <td>50.91</td>
+      </tr>
+      <tr style="background-color: rgb(255, 230, 153);">
+        <td>Llama 3</td>
+        <td>408</td>
+        <td>382</td>
+        <td>790</td>
+        <td>71.82</td>
+        <td>37.09</td>
+        <td>34.73</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<style>
+  .styled-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .styled-table th, .styled-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  .styled-table th {
+    background-color: #f2f2f2;
+  }
+</style>
+
+* It should be noted separately that for bencmark #1 we used finetuned llama-3 and gpt-3.5, while for bencmark #2 we used general ones

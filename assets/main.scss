@@ -3,24 +3,46 @@
 
 @import "{{ site.theme }}";
 
-/* Встановлюємо відступи для зовнішнього впорядкованого списку */
+@font-face {
+  font-family: 'Montserrat';
+  src: url('{{ "/assets/Montserrat-ExtraBold.ttf" | relative_url }}') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('{{ "/assets/Montserrat-Light.ttf" | relative_url }}') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: rgb(92,181,95);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800; 
+}
+
 ol {
   margin-left: 30px;
 }
 
 ol > li {
-  margin-bottom: 15px; /* Відступ між зовнішніми пунктами списку */
+  margin-bottom: 15px; 
 }
 
-/* Скидаємо відступи для внутрішніх списків */
 ol > li > ol,
 ol > li > ul,
 ul > li > ol,
 ul > li > ul {
-  margin-bottom: 0; /* Прибираємо відступи між внутрішніми пунктами списку */
+  margin-bottom: 0; 
 }
 
-/* Стилі для таблиць */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -46,5 +68,43 @@ tr:nth-child(even) {
 
 tr:hover {
   background-color: #f1f1f1;
+}
+
+.content-with-image {
+  display: flex;
+  align-items: flex-start;
+}
+
+.content-with-image .text-content {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.content-with-image .image-content {
+  flex: 0 0 300px; 
+}
+
+.content-with-image .image-content svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.content-with-image {
+  display: flex;
+  align-items: flex-start;
+}
+
+.content-with-image .text-content {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.content-with-image .image-content {
+  flex: 0 0 300px; 
+}
+
+.content-with-image .image-content svg {
+  max-width: 100%;
+  height: auto;
 }
 
