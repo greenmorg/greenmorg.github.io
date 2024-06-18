@@ -5,14 +5,14 @@
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('{{ "/assets/Montserrat-ExtraBold.ttf" | relative_url }}') format('truetype');
+  src: url('{{ "./assets/Montserrat-ExtraBold.ttf" | relative_url }}') format('truetype');
   font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Montserrat';
-  src: url('{{ "/assets/Montserrat-Light.ttf" | relative_url }}') format('truetype');
+  src: url('{{ "./assets/Montserrat-Light.ttf" | relative_url }}') format('truetype');
   font-weight: 300;
   font-style: normal;
 }
