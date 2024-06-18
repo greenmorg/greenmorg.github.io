@@ -196,9 +196,10 @@ The total maximum score for each model, combining both benchmarks, was:
 | 10            | 120           | 115           | 235   |
 | 11            | 140           | 134           | 274   |
 | **AVG_TOTAL** | 159           | 161           | 319   |
+
 <br>
 <p>We tracked the activity of 11 respondents in the evaluation and obtained average data on the number of points distributed by people in the context of questionnaire filling.</p>
-<br>
+
 
 <div class="styled-table">
   <table>
@@ -269,9 +270,9 @@ The total maximum score for each model, combining both benchmarks, was:
     background-color: #f2f2f2;
   }
 </style>
-<br>
+
 <p>The table below shows the cost per 1000 tokens for each model, providing a clear comparison of the price for processing tokens across different models. This parameter is separate and does not accumulate into the overall score.</p>
-<br>
+
 <div class="styled-table">
   <table>
     <thead>
