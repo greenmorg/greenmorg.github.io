@@ -279,7 +279,7 @@ The total maximum score for each model, combining both benchmarks, was:
     <tbody>
       <tr style="background-color: rgb(189, 215, 238);">
         <td>GPT4o/ GPT TURBO</td>
-        <td>0.01$**</td>
+        <td>0.01$</td>
       </tr>
       <tr style="background-color: rgb(198, 224, 180);">
         <td>GPT3.5</td>
