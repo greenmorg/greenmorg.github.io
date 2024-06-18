@@ -210,9 +210,9 @@ The total maximum score for each model, combining both benchmarks, was:
         <th>BENCH 1</th>
         <th>BENCH 2</th>
         <th>TOTAL</th>
-        <th>AVG PER RESP</th>
         <th>AVG PER RESP BENCH 1</th>
         <th>AVG PER RESP BENCH 2</th>
+        <th>AVG PER RESP</th>
       </tr>
     </thead>
     <tbody>
@@ -221,36 +221,36 @@ The total maximum score for each model, combining both benchmarks, was:
         <td>462</td>
         <td>326</td>
         <td>788</td>
-        <td>71.64</td>
         <td>42</td>
         <td>29.64</td>
+        <td>71.64</td>
       </tr>
       <tr style="background-color: rgb(198, 224, 180);">
         <td>GPT3.5</td>
         <td>463</td>
         <td>501</td>
         <td>964</td>
-        <td>87.64</td>
         <td>42.09</td>
         <td>45.55</td>
+        <td>87.64</td>        
       </tr>
       <tr style="background-color: rgb(248, 203, 173);">
         <td>Claude 3 Opus</td>
         <td>412</td>
         <td>560</td>
         <td>972</td>
-        <td>88.36</td>
         <td>37.45</td>
         <td>50.91</td>
+        <td>88.36</td>
       </tr>
       <tr style="background-color: rgb(255, 230, 153);">
         <td>Llama 3</td>
         <td>408</td>
         <td>382</td>
         <td>790</td>
-        <td>71.82</td>
         <td>37.09</td>
         <td>34.73</td>
+        <td>71.82</td>
       </tr>
     </tbody>
   </table>
