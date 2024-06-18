@@ -141,7 +141,7 @@ The total maximum score for each model, combining both benchmarks, was:
 <div class="content-with-image">
   <div class="text-content">
    <h2>Results</h2>
-   The table below presents the benchmarks results involving various respondents and models. The first table lists individual respondent scores across two benchmarks (<b>TOTAL BENCH 1</b> and <b>TOTAL BENCH 2</b>) along with their total cumulative scores (<b>TOTAL SUM</b>). The second table provides a summary of the performance of different models across the same benchmarks, including total scores, average scores per respondent, and specific averages for each benchmark. 
+   The table below presents the benchmarks results involving various respondents and models. The first table lists individual respondent scores across two benchmarks (<b>TOTAL BENCH 1</b> and <b>TOTAL BENCH 2</b>) along with their total cumulative scores (<b>TOTAL SUM</b>). The second table provides a summary of the performance of different models across the same benchmarks, including total scores, average scores per respondent, and specific averages for each benchmark. AVG PER RESP indicates the average score for each model per benchmark, calculated as the total score divided by the 11 respondents who participated in the survey.
   </div>
   <div class="image-content">
         <svg width="208" height="287" viewBox="0 0 416 574" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -196,7 +196,9 @@ The total maximum score for each model, combining both benchmarks, was:
 | 10            | 120           | 115           | 235   |
 | 11            | 140           | 134           | 274   |
 | **AVG_TOTAL** | 159           | 161           | 319   |
-
+<br>
+<p>We tracked the activity of 11 respondents in the evaluation and obtained average data on the number of points distributed by people in the context of questionnaire filling.</p>
+<br>
 
 <div class="styled-table">
   <table>
@@ -267,7 +269,9 @@ The total maximum score for each model, combining both benchmarks, was:
     background-color: #f2f2f2;
   }
 </style>
-
+<br>
+<p>The table below shows the cost per 1000 tokens for each model, providing a clear comparison of the price for processing tokens across different models. This parameter is separate and does not accumulate into the overall score.</p>
+<br>
 <div class="styled-table">
   <table>
     <thead>
