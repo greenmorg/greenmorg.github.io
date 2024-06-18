@@ -197,7 +197,7 @@ The total maximum score for each model, combining both benchmarks, was:
 | 11            | 140           | 134           | 274   |
 | **AVG_TOTAL** | 159           | 161           | 319   |
 
-<br>
+
 <p>We tracked the activity of 11 respondents in the evaluation and obtained average data on the number of points distributed by people in the context of questionnaire filling.</p>
 
 
