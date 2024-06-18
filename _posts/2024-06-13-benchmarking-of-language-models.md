@@ -279,19 +279,19 @@ The total maximum score for each model, combining both benchmarks, was:
     <tbody>
       <tr style="background-color: rgb(189, 215, 238);">
         <td>GPT4o/ GPT TURBO</td>
-        <td>0.01$</td>
+        <td>$0.01</td>
       </tr>
       <tr style="background-color: rgb(198, 224, 180);">
         <td>GPT3.5</td>
-        <td>0.001$</td>
+        <td>$0.001</td>
       </tr>
       <tr style="background-color: rgb(248, 203, 173);">
         <td>Claude 3 Opus</td>
-        <td>0.045$</td>
+        <td>$0.045</td>
       </tr>
       <tr style="background-color: rgb(255, 230, 153);">
         <td>Llama 3</td>
-        <td>0.00586$</td>
+        <td>$0.00586</td>
       </tr>
     </tbody>
   </table>
