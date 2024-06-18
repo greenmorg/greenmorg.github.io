@@ -128,7 +128,7 @@ For the five answers, a scoring system ranging from 0 to 3 was used to evaluate 
 
 #### Maximum Score for Benchmark #2
 
-Each question had a maximum score of 3, there were 4 parameters, and there were 5 questions. Therefore, the maximum score for each model in Benchmark #2 was:
+Each question had a maximum score of 3 for 1 parameter, there were 4 parameters, and there were 5 questions. Therefore, the maximum score for each model in Benchmark #2 was:
 
 **4 parameters * 3 points * 5 questions = 60 points.**
 
