@@ -62,10 +62,6 @@ th {
   background-color: #f2f2f2;
 }
 
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
 tr:hover {
   background-color: #f1f1f1;
 }
@@ -88,23 +84,3 @@ tr:hover {
   max-width: 100%;
   height: auto;
 }
-
-.content-with-image {
-  display: flex;
-  align-items: flex-start;
-}
-
-.content-with-image .text-content {
-  flex: 1;
-  padding-right: 20px;
-}
-
-.content-with-image .image-content {
-  flex: 0 0 300px; 
-}
-
-.content-with-image .image-content svg {
-  max-width: 100%;
-  height: auto;
-}
-
