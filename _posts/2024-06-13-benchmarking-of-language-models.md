@@ -342,6 +342,8 @@ Participants found an example of feedback along with the analysis results from f
 - The automatically generated response to the feedback content,
 - A summary providing concise information about the main content of the comment and its level of criticality.
 
+The feedbacks were sourced from the **NHS Choices reviews from the beginning up to 17 Dec 2017**. This dataset is publicly available in the Harvard Dataverse (https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/AXZDKC).
+
 #### Methodology for evaluating feedback analysis
 
 A scoring system ranging from 0 to 3 was used to evaluate the quality of the feedback analysis based on five parameters:
