@@ -117,10 +117,24 @@ tr:hover {
   }
 
   .content-with-image .first-image svg {
-    transform: translateX(15%);
+    transform: translateX(25%);
   }
 
   .content-with-image .second-image svg {
     transform: translateX(80%);
+  }
+
+  /* Table responsiveness for mobile devices */
+  .styled-table, table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+
+  .styled-table th, 
+  .styled-table td, 
+  th, 
+  td {
+    white-space: nowrap; /* Prevent text wrapping */
   }
 }
