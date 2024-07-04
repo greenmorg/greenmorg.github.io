@@ -43,7 +43,7 @@ categories: benchmarking llm RnD
 <div class="content-with-image">
   <div class="text-content">
   <h2>Results</h2>
-    Eleven respondents took part in the benchmark study, evaluating the outputs of the <b>GPT-4, GPT Turbo, GPT-3.5, Claude 3 Opus, and Llama 3 models</b> for the analysis of comments and answers to questions according to the corporate document through a blind review. On average, the models received the following points out of a possible 60 for each benchmark (<b>AVG PER RESP</b>) indicates the average score for each model per benchmark, calculated as the total score divided by the 11 respondents who participated in the survey). The table also shows the cost per 1000 tokens for each model, providing a clear comparison of the price for processing tokens across different models. This parameter is separate and does not accumulate into the overall score.
+    Eleven respondents took part in the benchmark study, evaluating the outputs of the <b>GPT-4o, GPT-3.5, Claude 3 Opus, and Llama 3 8b models</b> for the analysis of comments and answers to questions according to the corporate document through a blind review. On average, the models received the following points out of a possible 60 for each benchmark (<b>AVG PER RESP</b>) indicates the average score for each model per benchmark, calculated as the total score divided by the 11 respondents who participated in the survey). The table also shows the cost per 1000 tokens for each model, providing a clear comparison of the price for processing tokens across different models. This parameter is separate and does not accumulate into the overall score.
   </div>
   <div class="image-content second-image">
     <svg width="208" height="287" viewBox="0 0 416 574" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -95,7 +95,7 @@ categories: benchmarking llm RnD
   </thead>
   <tbody>
     <tr>
-      <td>GPT4o/ GPT TURBO</td>
+      <td>GPT4o</td>
       <td>462</td>
       <td>326</td>
       <td>788</td>
@@ -116,7 +116,7 @@ categories: benchmarking llm RnD
       <td>0.045</td>
     </tr>
     <tr>
-      <td>Llama 3</td>
+      <td>Llama 3 8b</td>
       <td>408</td>
       <td>382</td>
       <td>790</td>
@@ -136,7 +136,7 @@ categories: benchmarking llm RnD
   </thead>
   <tbody>
     <tr>
-      <td>GPT4o/ GPT TURBO</td>
+      <td>GPT4o</td>
       <td>71.64</td>
       <td>42</td>
       <td>29.64</td>
@@ -154,7 +154,7 @@ categories: benchmarking llm RnD
       <td>50.91</td>
     </tr>
     <tr>
-      <td>Llama 3</td>
+      <td>Llama 3 8b</td>
       <td>71.82</td>
       <td>37.09</td>
       <td>34.73</td>
