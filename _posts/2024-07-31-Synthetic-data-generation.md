@@ -86,6 +86,9 @@ By dynamically tailoring the extra prompts based on the table relationships and 
 - Sometimes, the generated data didn't perfectly align with the defined schemas, requiring additional validation and cleaning steps. 
 - Generating large volumes of data was time-consuming due to the model's processing requirements. 
 
+Dublication examples in the "Contacts" and "Doctors" tables
+![Dublication examples](\assets\dublication_exmpl.png)
+
 # 4. SDV library HMA Synthesizer  
 
 Synthetic Data Vault (SDV) is a Python library for generating synthetic data that mimics the structure and properties of real-world datasets. It provides various synthesizers for different data types and structures, including single-table, multi-table, and time series data. 
