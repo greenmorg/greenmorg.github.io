@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Gretel Relational Synthetic Report</title>
+  <style>
+          html,
+      body {
+        font-size: 16px;
+        color: #25212B;
+        margin: 0;
+        padding: 0;
+        background-color: #fafafa;
+        line-height: 1.5;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+      }
+      a {
+        color: #0c052e;
+      }
+      a:hover {
+        color: #3c1ae5;
+      }
+      .wrapper {
+        margin: auto;
+        max-width: 75ch;
+        max-width: 960px;
+        /* border-left: 1px solid #E5E5E6;
+            border-right: 1px solid #E5E5E6; */
+      }
+      section {
+        background-color: #fff;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+      section.break {
+        page-break-after: always;
+      }
+      figure {
+        text-align: center;
+        /* border: 2px solid #180a5c; */
+        width: 100%;
+        margin: 0 0 2rem 0;
+      }
+      figcaption {
+        text-align: center;
+        color: #646369;
+        font-size: 0.875rem;
+        margin: 0.5rem 0;
+      }
+      header {
+        padding: 2rem 0 4rem 0;
+        margin-bottom: -4rem;
+        color: #fff;
+        background-color: #0c0c0d;
+      }
+      h1 {
+        color: #25212B;
+        font-size: 3rem;
+        font-weight: 500;
+        line-height: 1.2;
+        margin-bottom: 0.5em;
+      }
+      h2 {
+        color: #25212B;
+        margin: 0;
+        page-break-after: avoid;
+      }
+      .note {
+        background-color: #faecd1;
+      }
+      /* TABLE */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th {
+        background-color: #fafafa;
+        text-align: left;
+        border: none;
+      }
+      th,
+      td {
+        padding: 0.25rem 0.5rem;
+        border-bottom: 1px solid #e5e5e6;
+        border-top: 1px solid #e5e5e6;
+        border-right: 1px solid #e5e5e6;
+      }
+      th:last-of-type,
+      td:last-of-type {
+        border-right: none;
+      }
+      th.tnum,
+      td.tnum {
+        font-feature-settings: "tnum";
+        text-align: right;
+      }
+      .highlight {
+        background-color: #fafafa;
+        font-family: monospace;
+        font-weight: normal;
+      }
+      footer {
+        color: #646369;
+      }
+      @media print {
+        html,
+        body {
+          font-size: 12px;
+          background-color: transparent;
+        }
+        header {
+          color: #000;
+          background-color: transparent;
+        }
+        section {
+          box-shadow: none;
+          border: 1px solid #e5e5e6;
+        }
+        a {
+          text-decoration: none;
+        }
+        a:not([href*="#"])::after {
+          content: " (" attr(href) ")";
+        }
+      }
+    :root {
+    --color-unavailable: #DCDCDC;
+	--color-v-poor: #F5B1A3;
+	--color-poor: #F5CCA3;
+	--color-moderate: #F5DAA3;
+	--color-good: #E9F1C0;
+	--color-excellent: #C8F1C0;
+	--color-highlighted: #FDE68A;
+	--color-highlighted-row: #FFF9E0;
+	--color-figure-v-poor: #E53C1A;
+	--color-figure-poor: #E5801A;
+	--color-figure-moderate: #E5A11A;
+	--color-figure-good: #B7D22D;
+	--color-figure-excellent: #48D22D;
+	--color-neutral-50: #FAFAFA;
+	--color-neutral-100: #E5E5E6;
+	--color-neutral-400: #97969C;
+	--color-plum: #C18DFC;
+	--gap-disclosure: 0.5rem;
+}
+
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	min-height: 100vh;
+	margin: 0;
+}
+body::before {
+	content: " ";
+	display: block;
+	width: 100%;
+	height: 0.5rem;
+	background-color: var(--color-plum);
+}
+.section {
+	width: 100%;
+	max-width: 70rem;
+	margin: 4rem auto;
+}
+.header__container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.score-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.score-container-text {
+	font-size: 1.3125rem;
+	text-align: center;
+	float: right;
+}
+.score {
+	width: 180px;
+	height: 180px;
+}
+.ring {
+	margin: 1rem;
+	width: 90px;
+	height: 90px;
+	display: inline-block;
+}
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+.grid__cell {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-bottom: 1px solid var(--color-neutral-100);
+	border-right: 1px solid var(--color-neutral-100);
+}
+.grid__cell[aria-expanded="true"] {
+	background-color: var(--color-neutral-50);
+}
+.grid__cell:last-of-type {
+	border-right: none;
+}
+.grid__cell__row {
+    display: flex;
+	align-items: center;
+	width: 95%;
+}
+
+.label {
+	display: inline-block;
+	font-size: 0.9375rem;
+	line-height: 1;
+	padding: 0.25rem 0.75rem;
+	border-radius: 1.25rem;
+}
+.label__unavailable {
+	background-color: var(--color-unavailable);
+}
+.label__very-poor {
+	background-color: var(--color-v-poor);
+}
+.label__poor {
+	background-color: var(--color-poor);
+}
+.label__moderate {
+	background-color: var(--color-moderate);
+}
+.label__good {
+	background-color: var(--color-good);
+}
+.label__excellent {
+	background-color: var(--color-excellent);
+}
+
+.label__highlighted {
+	background-color: var(--color-highlighted);
+}
+.row__highlighted {
+	background-color: var(--color-highlighted-row);
+}
+
+.figure__very-poor {
+	background-color: var(--color-figure-v-poor);
+}
+.figure__poor {
+	background-color: var(--color-figure-poor);
+}
+.figure__moderate {
+	background-color: var(--color-figure-moderate);
+}
+.figure__good {
+	background-color: var(--color-figure-good);
+}
+.figure__excellent {
+	background-color: var(--color-figure-excellent);
+}
+
+.sqs-table-score {
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+.sqs-table-link {
+	float: right;
+	padding-right: 1rem;
+}
+
+/* Utils */
+.h3 {
+	font-size: 1.3125rem;
+}
+.m-0\.25 {
+    margin: 0.25rem 0;
+}
+.mb-0\.5 {
+	margin-bottom: 0.5rem;
+}
+.mb-1 {
+	margin-bottom: 1rem;
+}
+.mt-0 {
+	margin-top: 0;
+}
+.mt-0\.5 {
+	margin-top: 0.5rem;
+}
+.mt-1 {
+	margin-top: 1rem;
+}
+.mt--2 {
+	margin-top: -2rem;
+}
+.py-2 {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+    :root {
+	--color-privacy-poor: #CBD2FC;
+	--color-privacy-normal: #A0ABF5;
+	--color-privacy-good: #7C87E9;
+	--color-privacy-very-good: #5351DE;
+	--color-privacy-excellent: #3B2ED0;
+	--color-white: #FFFFFF;
+	--color-privacy-text: #144BB8;
+	--color-privacy-text-not-excellent: #0C052E;
+}
+
+.grid-pps {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.label__privacy__poor {
+	background-color: var(--color-privacy-poor);
+	color: var(--color-privacy-text-not-excellent);
+}
+.label__privacy__normal {
+	background-color: var(--color-privacy-normal);
+	color: var(--color-privacy-text-not-excellent);
+}
+.label__privacy__good {
+	background-color: var(--color-privacy-good);
+	color: var(--color-privacy-text-not-excellent);
+}
+.label__privacy__very-good {
+	background-color: var(--color-privacy-good);
+	color: var(--color-privacy-text-not-excellent);
+}
+.label__privacy__excellent {
+	background-color: var(--color-privacy-excellent);
+	color: var(--color-white);
+}
+
+.privacy-level {
+    color: var(--color-privacy-text);
+}
+  </style>
+  <script src="https://cdn.plot.ly/plotly-2.18.0.min.js"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+
+    <div class="section test-report-main-score">
+        <div class="header__container">
+
+        <div class="header">
+          <h1>Gretel Relational<br />Synthetic Report</h1>
+          <span>
+            <b>Generated</b> 2024-08-01
+            <br/>
+            <b>Generation ID</b> my-mysql-workflow-model-train-run-20240801071721
+          </span>
+        </div>
+
+        <div class="score-container mb-1">
+            <span class="label label__good mb-0.5">
+              Good
+            </span>
+            <div id="chart" class="score mb-0.5">
+                <figure><div>                            <div id="34983287-e4dd-4e79-bed7-11376e1a30e1" class="plotly-graph-div" style="height:180px; width:180px;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("34983287-e4dd-4e79-bed7-11376e1a30e1")) {                    Plotly.newPlot(                        "34983287-e4dd-4e79-bed7-11376e1a30e1",                        [{"direction":"clockwise","hole":0.75,"hoverinfo":"none","marker":{"colors":["rgb(229, 60, 26)","rgb(229, 128, 26)","rgb(229, 161, 26)","rgb(183, 210, 45)","rgb(72, 210, 45)","rgba(255, 255, 255, 0)"],"line":{"color":"#fafafa","width":4}},"name":"gauge","rotation":-126,"showlegend":false,"sort":false,"textinfo":"none","textposition":"outside","values":[14,14,14,14,14,30],"type":"pie"},{"domain":{"x":[0,1],"y":[0.28,0.45]},"mode":"number","value":64,"type":"indicator"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"visible":false},"yaxis":{"visible":false},"margin":{"l":0,"r":0,"t":0,"b":0},"autosize":false,"showlegend":false,"height":180,"width":180,"paper_bgcolor":"rgba(0,0,0,0)","hovermode":false,"modebar":{},"shapes":[{"fillcolor":"black","type":"circle","x0":0.475,"x1":0.525,"y0":0.475,"y1":0.525},{"fillcolor":"black","line":{"width":0},"path":"\n    M 0.7563049120181109 0.8698753737076699\n    L 0.4794513681273517\n        0.5142391617787839\n    L 0.5205486318726483\n        0.4857608382212161\n    Z","type":"path"}]},                        {"displayModeBar": false, "responsive": true}                    )                };                            </script>        </div></figure>
+            </div>
+            <div>
+                <span class="score-container-text">Composite<br />Synthetic Data Quality Score</span>
+            </div>
+        </div>
+
+        <div class="score-container mb-1">
+            <span class="label label__privacy__normal mb-0.5">
+              Normal
+            </span>
+            <div id="chart" class="score mb-0.5">
+                <figure><div>                            <div id="5e84775e-4e34-4ff8-8d40-d28e70b2c1ff" class="plotly-graph-div" style="height:180px; width:180px;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("5e84775e-4e34-4ff8-8d40-d28e70b2c1ff")) {                    Plotly.newPlot(                        "5e84775e-4e34-4ff8-8d40-d28e70b2c1ff",                        [{"direction":"clockwise","hole":0.75,"hoverinfo":"none","marker":{"colors":["rgb(203, 210, 252)","rgb(160, 171, 245)","rgb(124, 135, 233)","rgb(83, 81, 222)","rgb(59, 46, 208)","rgba(255, 255, 255, 0)"],"line":{"color":"#fafafa","width":4}},"name":"gauge","rotation":-126,"showlegend":false,"sort":false,"textinfo":"none","textposition":"outside","values":[14,14,14,14,14,30],"type":"pie"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"visible":false},"yaxis":{"visible":false},"margin":{"l":0,"r":0,"t":0,"b":0},"autosize":false,"showlegend":false,"height":180,"width":180,"paper_bgcolor":"rgba(0,0,0,0)","hovermode":false,"modebar":{},"shapes":[{"fillcolor":"black","type":"circle","x0":0.475,"x1":0.525,"y0":0.475,"y1":0.525},{"fillcolor":"black","line":{"width":0},"path":"\n    M 0.1573077616084685 0.791653955478409\n    L 0.4837970024734217\n        0.48096154231158156\n    L 0.5162029975265783\n        0.5190384576884184\n    Z","type":"path"}]},                        {"displayModeBar": false, "responsive": true}                    )                };                            </script>        </div></figure>
+            </div>
+            <div>
+                <span class="score-container-text">Composite<br />Privacy Protection Level</span>
+            </div>
+        </div>
+
+        </div>
+    </div>
+
+    <section class="scroll test-table-relationships">
+      <h2>Table Relationships</h2>
+
+      <p>
+        The primary and foreign keys for each table in the synthesized database and their
+        relationships are displayed below.
+      </p>
+
+      <table>
+        <tr>
+            <th>Table Name</th>
+            <th>Primary Key</th>
+            <th>Foreign Keys</th>
+        </tr>
+        
+        <tr>
+          <td><b>Branch_Expenses</b></td>
+          <td>
+            
+            <span id="Branch_Expenses_ID" data-pk class="label">ID</span>
+            
+          </td>
+          <td>
+            
+              
+                <span class="label" data-fk-from="Branches_Branch_ID">Branch_ID</span>&nbsp;
+              
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Branches</b></td>
+          <td>
+            
+            <span id="Branches_Branch_ID" data-pk class="label">Branch_ID</span>
+            
+          </td>
+          <td>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Detailed_Patients_Visits</b></td>
+          <td>
+            
+            <span id="Detailed_Patients_Visits_ID" data-pk class="label">ID</span>
+            
+          </td>
+          <td>
+            
+              
+                <span class="label" data-fk-from="Patients_Visits_Patients_visits_ID">Patients_visits_ID</span>&nbsp;
+              
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Doctors</b></td>
+          <td>
+            
+            <span id="Doctors_Doctor_ID" data-pk class="label">Doctor_ID</span>
+            
+          </td>
+          <td>
+            
+              
+                <span class="label" data-fk-from="Specializations_Specialization_ID">Specialization_ID</span>&nbsp;
+              
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Doctors_Contacts</b></td>
+          <td>
+            
+            <span id="Doctors_Contacts_ID" data-pk class="label">ID</span>
+            
+          </td>
+          <td>
+            
+              
+                <span class="label" data-fk-from="Doctors_Doctor_ID">Doctor_ID</span>&nbsp;
+              
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Patients</b></td>
+          <td>
+            
+            <span id="Patients_Patient_ID" data-pk class="label">Patient_ID</span>
+            
+          </td>
+          <td>
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Patients_Visits</b></td>
+          <td>
+            
+            <span id="Patients_Visits_Patients_visits_ID" data-pk class="label">Patients_visits_ID</span>
+            
+          </td>
+          <td>
+            
+              
+                <span class="label" data-fk-from="Doctors_Doctor_ID">Doctor_ID</span>&nbsp;
+              
+            
+              
+                <span class="label" data-fk-from="Patients_Patient_ID">Patient_ID</span>&nbsp;
+              
+            
+              
+                <span class="label" data-fk-from="Visits_Type_Visit_ID">Visit_ID</span>&nbsp;
+              
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Specializations</b></td>
+          <td>
+            
+            <span id="Specializations_Specialization_ID" data-pk class="label">Specialization_ID</span>
+            
+          </td>
+          <td>
+            
+              
+                <span class="label" data-fk-from="Branches_Branch_ID">Branch_ID</span>&nbsp;
+              
+            
+          </td>
+        </tr>
+        
+        <tr>
+          <td><b>Visits_Type</b></td>
+          <td>
+            
+            <span id="Visits_Type_Visit_ID" data-pk class="label">Visit_ID</span>
+            
+          </td>
+          <td>
+            
+          </td>
+        </tr>
+        
+      </table>
+    </section>
+
+    <section class="break test-sqs-results">
+      <h2>Synthetic Data Quality Results</h2>
+
+      <p>For each table, individual and cross-table Gretel Synthetic Reports are generated, which
+        include the Synthetic Data
+      Quality Score (SQS). The individual Synthetic Report evaluates the statistical accuracy of the
+      individual synthetic table compared to the real world data that it is
+      based on. This provides insight into the accuracy of the synthetic output of the stand-alone
+      table. The individual SQS does not take into account statistical correlations of data across
+      related tables. The
+      cross-table Synthetic Report evaluates the statistical accuracy of the synthetic data of a
+      table with consideration to the
+      correlations between data across related tables. The cross-table SQS provides insight into
+      the accuracy of the
+      table in the context of the database as a whole. More information about the Gretel Synthetic
+      Report and Synthetic Data Quality Score is
+      available <a href="https://docs.gretel.ai/reference/synthetics/gretel-synthetic-report">here</a>.</p>
+
+      <span class="h3">Synthetic Data Quality Scores</span>
+
+        <p>For each table, individual and cross-table synthetic data quality scores (SQS) are computed and displayed below.</p>
+
+        <table>
+          <tr>
+            <th scope="row">Table Name</th>
+            <th scope="col">Individual SQS</th>
+            <th scope="col">Cross-table SQS</th>
+          </tr>
+          
+          
+          
+          <tr>
+            <td><b>Branches</b></td>
+            <td>
+              <span class="sqs-table-score">68</span>
+              <span class="label label__good">
+                Good
+              </span>
+            </td>
+            <td>
+              <span class="sqs-table-score">None</span>
+              <span class="label label__unavailable">
+                Unavailable
+              </span>
+            </td>
+          </tr>
+          
+          
+          
+          <tr>
+            <td><b>Specializations</b></td>
+            <td>
+              <span class="sqs-table-score">100</span>
+              <span class="label label__excellent">
+                Excellent
+              </span>
+            </td>
+            <td>
+              <span class="sqs-table-score">57</span>
+              <span class="label label__moderate">
+                Moderate
+              </span>
+            </td>
+          </tr>
+          
+          
+          
+          <tr>
+            <td><b>Branch_Expenses</b></td>
+            <td>
+              <span class="sqs-table-score">34</span>
+              <span class="label label__poor">
+                Poor
+              </span>
+            </td>
+            <td>
+              <span class="sqs-table-score">40</span>
+              <span class="label label__moderate">
+                Moderate
+              </span>
+            </td>
+          </tr>
+          
+          
+          
+          <tr>
+            <td><b>Doctors_Contacts</b></td>
+            <td>
+              <span class="sqs-table-score">68</span>
+              <span class="label label__good">
+                Good
+              </span>
+            </td>
+            <td>
+              <span class="sqs-table-score">65</span>
+              <span class="label label__good">
+                Good
+              </span>
+            </td>
+          </tr>
+          
+          
+          
+          <tr>
+            <td><b>Detailed_Patients_Visits</b></td>
+            <td>
+              <span class="sqs-table-score">71</span>
+              <span class="label label__good">
+                Good
+              </span>
+            </td>
+            <td>
+              <span class="sqs-table-score">45</span>
+              <span class="label label__moderate">
+                Moderate
+              </span>
+            </td>
+          </tr>
+          
+          
+          
+          <tr>
+            <td><b>Patients_Visits</b></td>
+            <td>
+              <span class="sqs-table-score">72</span>
+              <span class="label label__good">
+                Good
+              </span>
+            </td>
+            <td>
+              <span class="sqs-table-score">39</span>
+              <span class="label label__poor">
+                Poor
+              </span>
+            </td>
+          </tr>
+          
+          
+          
+          <tr>
+            <td><b>Doctors</b></td>
+            <td>
+              <span class="sqs-table-score">69</span>
+              <span class="label label__good">
+                Good
+              </span>
+            </td>
+            <td>
+              <span class="sqs-table-score">64</span>
+              <span class="label label__good">
+                Good
+              </span>
+            </td>
+          </tr>
+          
+          
+          
+          <tr>
+            <td><b>Patients</b></td>
+            <td>
+              <span class="sqs-table-score">66</span>
+              <span class="label label__good">
+                Good
+              </span>
+            </td>
+            <td>
+              <span class="sqs-table-score">None</span>
+              <span class="label label__unavailable">
+                Unavailable
+              </span>
+            </td>
+          </tr>
+          
+          
+          
+          <tr>
+            <td><b>Visits_Type</b></td>
+            <td>
+              <span class="sqs-table-score">100</span>
+              <span class="label label__excellent">
+                Excellent
+              </span>
+            </td>
+            <td>
+              <span class="sqs-table-score">None</span>
+              <span class="label label__unavailable">
+                Unavailable
+              </span>
+            </td>
+          </tr>
+          
+        </table>
+
+        <p> The Synthetic Data Quality Score is an estimate of how well the generated synthetic
+            data maintains the same statistical properties as the original dataset. In this
+            sense, the Synthetic Data Quality Score can be viewed as a utility score or a
+            confidence score as to whether scientific conclusions drawn from the synthetic
+            dataset would be the same if one were to have used the original dataset instead.
+            If you do not require statistical symmetry, as might be the case in a testing or
+            demo environment, a lower score may be just as acceptable.</p>
+        <p> If your Synthetic Data Quality Score isn't as high as you'd like it to be,
+            read <a href="https://docs.gretel.ai/reference/synthetics/tips-improve-synthetic-data-accuracy">here</a>
+            for a multitude of ideas for improving your model.</p>
+
+    </section>
+
+    <footer>
+      <p>
+        Copyright © 2024 Gretel Labs, Inc. All rights reserved.
+      </p>
+    </footer>
+
+    </div>
+    <script>
+      function mouseOverPk(event) {
+    event.preventDefault();
+    let { currentTarget } = event;
+    let target = currentTarget;
+
+    target.classList.add("label__highlighted");
+    target.parentNode.parentNode.classList.add("row__highlighted");
+
+    document.querySelectorAll(`[data-fk-from=${target.id}]`).forEach(
+        fk => {
+            fk.classList.add("label__highlighted");
+            fk.parentNode.parentNode.classList.add("row__highlighted");
+        }
+    )
+}
+
+function mouseOutPk(event) {
+    event.preventDefault();
+    let { currentTarget } = event;
+    let target = currentTarget;
+
+    target.classList.remove("label__highlighted");
+    target.parentNode.parentNode.classList.remove("row__highlighted");
+
+    document.querySelectorAll(`[data-fk-from=${target.id}]`).forEach(
+        fk => {
+            fk.classList.remove("label__highlighted");
+            fk.parentNode.parentNode.classList.remove("row__highlighted");
+        }
+    )
+}
+
+function mouseOverFk(event) {
+    event.preventDefault();
+    let { currentTarget } = event;
+    let target = currentTarget;
+
+    target.classList.add("label__highlighted");
+    target.parentNode.parentNode.classList.add("row__highlighted");
+
+    let pk = document.getElementById(target.getAttribute('data-fk-from'));
+    pk.classList.add("label__highlighted");
+    pk.parentNode.parentNode.classList.add("row__highlighted");
+}
+
+function mouseOutFk(event) {
+    event.preventDefault();
+    let { currentTarget } = event;
+    let target = currentTarget;
+
+    target.classList.remove("label__highlighted");
+    target.parentNode.parentNode.classList.remove("row__highlighted");
+
+    let pk = document.getElementById(target.getAttribute('data-fk-from'));
+    pk.classList.remove("label__highlighted");
+    pk.parentNode.parentNode.classList.remove("row__highlighted");
+}
+
+const pks = document.querySelectorAll('[data-pk]');
+pks.forEach(pk => { pk.onmouseover = mouseOverPk });
+pks.forEach(pk => { pk.onmouseout = mouseOutPk });
+
+const fks = document.querySelectorAll('[data-fk-from]');
+fks.forEach(fk => { fk.onmouseover = mouseOverFk });
+fks.forEach(fk => { fk.onmouseout = mouseOutFk });
+    </script>
+  </body>
+</html>

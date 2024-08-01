@@ -1,0 +1,1806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gretel synthetics report</title>
+    <style>
+              html,
+      body {
+        font-size: 16px;
+        color: #25212B;
+        margin: 0;
+        padding: 0;
+        background-color: #fafafa;
+        line-height: 1.5;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+      }
+      a {
+        color: #0c052e;
+      }
+      a:hover {
+        color: #3c1ae5;
+      }
+      .wrapper {
+        margin: auto;
+        max-width: 75ch;
+        max-width: 1080px;
+        /* border-left: 1px solid #E5E5E6;
+            border-right: 1px solid #E5E5E6; */
+      }
+      section {
+        background-color: #fff;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      }
+      section.break {
+        page-break-after: always;
+      }
+      figure {
+        text-align: center;
+        /* border: 2px solid #180a5c; */
+        width: 100%;
+        margin: 0 0 2rem 0;
+      }
+      figcaption {
+        text-align: center;
+        color: #646369;
+        font-size: 0.875rem;
+        margin: 0.5rem 0;
+      }
+      header {
+        padding: 2rem 0 4rem 0;
+        margin-bottom: -4rem;
+        color: #fff;
+        background-color: #0c0c0d;
+      }
+      h1 {
+        color: #25212B;
+        font-size: 3rem;
+        font-weight: 500;
+        line-height: 1.2;
+        margin-bottom: 0.5em;
+      }
+      h2 {
+        color: #25212B;
+        margin: 0;
+        page-break-after: avoid;
+      }
+      .note {
+        background-color: #faecd1;
+      }
+      /* TABLE */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th {
+        background-color: #fafafa;
+        text-align: left;
+        border: none;
+      }
+      th,
+      td {
+        padding: 0.25rem 0.5rem;
+        border-bottom: 1px solid #e5e5e6;
+        border-top: 1px solid #e5e5e6;
+        border-right: 1px solid #e5e5e6;
+      }
+      th:last-of-type,
+      td:last-of-type {
+        border-right: none;
+      }
+      th.tnum,
+      td.tnum {
+        font-feature-settings: "tnum";
+        text-align: right;
+      }
+      dl {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        grid-template-rows: auto;
+        font-size: 1.25rem;
+        margin: 0;
+      }
+      dt,
+      dd {
+        margin: 0 0 0.75rem 0;
+        padding: 0 0 0.25rem 0;
+        border-bottom: 2px solid #e5e5e6;
+      }
+      dd {
+        font-family: monospace;
+      }
+      .highlight {
+        background-color: #fafafa;
+        font-family: monospace;
+        font-weight: normal;
+      }
+      footer {
+        color: #646369;
+      }
+      @media print {
+        html,
+        body {
+          font-size: 12px;
+          background-color: transparent;
+        }
+        header {
+          color: #000;
+          background-color: transparent;
+        }
+        section {
+          box-shadow: none;
+          border: 1px solid #e5e5e6;
+        }
+        a {
+          text-decoration: none;
+        }
+        a:not([href*="#"])::after {
+          content: " (" attr(href) ")";
+        }
+      }
+        :root {
+    --color-unavailable: #DCDCDC;
+	--color-v-poor: #F5B1A3;
+	--color-poor: #F5CCA3;
+	--color-moderate: #F5DAA3;
+	--color-good: #E9F1C0;
+	--color-excellent: #C8F1C0;
+	--color-figure-v-poor: #E53C1A;
+	--color-figure-poor: #E5801A;
+	--color-figure-moderate: #E5A11A;
+	--color-figure-good: #B7D22D;
+	--color-figure-excellent: #48D22D;
+	--color-neutral-50: #FAFAFA;
+	--color-neutral-100: #E5E5E6;
+	--color-neutral-400: #97969C;
+	--color-plum: #C18DFC;
+	--gap-disclosure: 0.5rem;
+}
+
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	min-height: 100vh;
+	margin: 0;
+}
+.section {
+	width: 100%;
+	max-width: 70rem;
+	margin: 4rem auto;
+}
+.new-header {
+	margin: auto;
+	padding-top: 24px;
+	padding-bottom: 24px;
+	max-width: 75ch;
+	max-width: 1080px;
+	display: flex;
+}
+.gretel-logo{
+	padding-right: 24px;
+	vertical-align: middle;
+}
+.report-title {
+	font-size: 28px; 
+	line-height:36px; 
+	font-weight: 700;
+	display: inline-block;
+}
+.console-link {
+	padding: 6px;
+	margin-left: auto;
+	display: inline-block;
+}
+.sign-in{
+	border-radius: 5px;
+	background-color: #F5F4FE;
+	color:#3B2ED0;
+	font-weight: 700;
+	font-size: 16px; 
+	Line-height: 24px;
+	size: 20px  20px;
+	padding-top: 12px;
+	padding-left: 16px;
+	padding-right: 16px;
+	padding-bottom: 12px;
+	text-decoration: none;
+}
+.sign-in:hover{
+	background-color: #E8ECFC;
+}
+.sign-in:active{
+	background-color: #CBD2FC;
+}
+.right-arrow{
+	padding-left: 8px;
+	align-items: center;
+}
+hr {
+	height: 4px;
+	background-color:#CBD2FC;
+	border: 0;
+	margin: 0;
+}
+.model-name-text {
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 24px;
+	padding-bottom: 4px;
+	color: #B2B0C4;
+}
+.model-data{
+	padding-bottom: 4px;
+}
+.model-name-content {
+	font-size:40px;
+	font-weight: 500;
+	line-height: 48px;
+	padding-bottom: 24px;
+}
+.model-uid-text {
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 32px;
+	padding-right: 8px;
+	color: #646071;
+}
+.model-uid-content {
+	display: inline-block;
+	font-size: 14px;
+	line-height: 32px;
+	font-weight: 400;
+}
+.project-name-text {
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 32px;
+	padding-right: 28px;
+	color: #646071;
+}
+.project-name-content {
+	display: inline-block;
+	font-size: 14px;
+	line-height: 32px;
+	font-weight: 400;
+}
+.copy-to-clipboard {
+	background-color: #F5F4FE;
+	border-radius: 5px;
+	border: none;
+	padding: 8px;
+	height: 32px;
+}
+.copy-to-clipboard:hover{
+	background-color: #E8ECFC;
+}
+.copy-to-clipboard:active{
+	background-color: #CBD2FC;
+}
+.copied-message{
+	font-size:14px;
+	color: #5351DE;
+}
+.percentage{
+	color: #3B2ED0;
+	font-weight: 700;
+	font-size: 96px;
+	line-height: 96px;
+	align-items: right;
+}
+.header__container {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.score-container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+.score-container-end {
+	display: flex;
+	align-items: end;
+	flex-direction: column;
+}
+.score {
+	width: 180px;
+	height: 180px;
+}
+.ring {
+	margin: 1rem;
+	width: 90px;
+	height: 90px;
+	display: inline-block;
+}
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+.grid__cell {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-bottom: 1px solid var(--color-neutral-100);
+	border-right: 1px solid var(--color-neutral-100);
+}
+.grid__cell[aria-expanded="true"] {
+	background-color: var(--color-neutral-50);
+}
+.grid__cell:last-of-type {
+	border-right: none;
+}
+.grid__cell__row {
+    display: flex;
+	align-items: center;
+	width: 95%;
+}
+
+.label {
+	display: inline-block;
+	font-size: 0.9375rem;
+	line-height: 1;
+	padding: 0.25rem 0.75rem;
+	border-radius: 1.25rem;
+}
+.label__unavailable {
+	background-color: var(--color-unavailable);
+}
+.label__very-poor {
+	background-color: var(--color-v-poor);
+}
+.label__poor {
+	background-color: var(--color-poor);
+}
+.label__moderate {
+	background-color: var(--color-moderate);
+}
+.label__good {
+	background-color: var(--color-good);
+}
+.label__excellent {
+	background-color: var(--color-excellent);
+}
+.figure__very-poor {
+	background-color: var(--color-figure-v-poor);
+}
+.figure__poor {
+	background-color: var(--color-figure-poor);
+}
+.figure__moderate {
+	background-color: var(--color-figure-moderate);
+}
+.figure__good {
+	background-color: var(--color-figure-good);
+}
+.figure__excellent {
+	background-color: var(--color-figure-excellent);
+}
+
+.disclosure-message__wrap {
+	padding-bottom: 0.5rem;
+}
+.disclosure-message {
+	padding-top: 1.5rem;
+	margin: 0;
+}
+.disclosure-mono {
+    font-family: monospace;
+}
+.disclosure-table {
+    line-height: 1;
+}
+.disclosure-toggle {
+	color: var(--color-neutral-400);
+	position: relative;
+	margin: 0;
+	padding: 0;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.data-quality-table {
+    text-align: center;
+    width: 12%;
+}
+th.data-quality-table {
+    border: 1px solid #e5e5e6;
+}
+
+.distribution-container {
+    width: 260px;
+    height: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: stretch;
+    justify-content: stretch;
+    flex-wrap: nowrap;
+}
+
+.distribution-start {
+      border-top-left-radius: 1.25rem;
+      border-bottom-left-radius: 1.25rem;
+}
+.distribution-middle {
+      border-right: 2px solid white;
+}
+.distribution-end {
+      border-top-right-radius: 1.25rem;
+      border-bottom-right-radius: 1.25rem;
+}
+
+.score-error-banner {
+    display: flex;
+    background-color: #fff9df;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.score-error-icon {
+    color: rgba(174, 95, 5, 1);
+    font-size: 1.25rem;
+}
+.score-error-text {
+    color: rgba(93, 41, 9, 1);
+    padding-left: 0.75rem;
+}
+.score-error-header {
+    display: inline-block;
+    padding-bottom: 4px;
+}
+a.score-error-support-link:link {
+    color: rgba(83, 81, 222, 1);
+}
+a.score-error-support-link:hover, a.score-error-support-link:active {
+    color: rgba(33, 20, 148, 1);
+}
+
+/* Utils */
+.big-number {
+	font-size: 6rem;
+	color: rgb(83,81,222);
+}
+.h2 {
+	font-size: 4rem;
+}
+.h3 {
+	font-size: 1.3125rem;
+}
+.m-0\.25 {
+    margin: 0.25rem 0;
+}
+.mb-0\.5 {
+	margin-bottom: 0.5rem;
+}
+.mb-1 {
+	margin-bottom: 1rem;
+}
+.mt-0 {
+	margin-top: 0;
+}
+.mt-0\.5 {
+	margin-top: 0.5rem;
+}
+.mt-1 {
+	margin-top: 1rem;
+}
+.mt-2 {
+	margin-top: 2rem;
+}
+.mt--2 {
+	margin-top: -2rem;
+}
+.py-2 {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+        :root {
+	--color-privacy-poor: #CBD2FC;
+	--color-privacy-normal: #A0ABF5;
+	--color-privacy-good: #7C87E9;
+	--color-privacy-very-good: #5351DE;
+	--color-privacy-excellent: #3B2ED0;
+	--color-white: #FFFFFF;
+	--color-privacy-text: #144BB8;
+	--color-privacy-text-not-excellent: #0C052E;
+}
+
+.grid-pps {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.label__privacy__poor {
+	background-color: var(--color-privacy-poor);
+	color: var(--color-privacy-text-not-excellent);
+}
+.label__privacy__normal {
+	background-color: var(--color-privacy-normal);
+	color: var(--color-privacy-text-not-excellent);
+}
+.label__privacy__good {
+	background-color: var(--color-privacy-good);
+	color: var(--color-privacy-text-not-excellent);
+}
+.label__privacy__very-good {
+	background-color: var(--color-privacy-good);
+	color: var(--color-privacy-text-not-excellent);
+}
+.label__privacy__excellent {
+	background-color: var(--color-privacy-excellent);
+	color: var(--color-white);
+}
+
+.privacy-level {
+    color: var(--color-privacy-text);
+}
+
+.privacy_level_info {
+}
+
+.icon-wrapper {
+    position: relative;
+    display: inline-block;
+}
+.icon-status {
+    position: absolute;
+    bottom: -5px;
+    right: -18px;
+}
+    </style>
+        
+            <script src="https://cdn.plot.ly/plotly-2.18.0.min.js"></script>
+        
+</head>
+<body>
+    <div class="new-header">
+      <div class="gretel-logo">
+        <svg width="100" height="40" viewBox="0 0 181 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g clip-path="url(#clip0_849_78)">
+          <path d="M53.4437 41.3178V53.5794H44.4782V18.8754H53.4437V27.0498C55.1339 21.1048 58.9552 18.1323 63.144 18.1323C65.3487 18.1323 67.2593 18.5782 68.8025 19.3956L67.2593 27.57C65.863 26.9011 64.0993 26.604 62.0417 26.604C56.3097 26.604 53.4437 31.5085 53.4437 41.3178Z" fill="#3B2ED0"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M103.383 45.9252C100.444 51.573 94.1975 54.3226 87.3631 54.3226C82.366 54.3226 78.1773 52.6134 74.7234 49.2693C71.2694 45.8509 69.5793 41.4664 69.5793 36.1159C69.5793 30.7654 71.2694 26.4553 74.7234 23.1112C78.1773 19.7671 82.366 18.1323 87.3631 18.1323C92.3603 18.1323 96.4755 19.7671 99.7824 23.1112C103.089 26.4553 104.78 30.7654 104.78 36.1159C104.78 37.019 104.715 37.987 104.647 39.0198L104.633 39.2371H78.4712C79.0591 43.7701 82.8805 46.6684 87.951 46.6684C91.5519 46.6684 95.0058 45.1078 96.549 42.2097L103.383 45.9252ZM78.3978 33.0691H96.0346C95.3733 28.3875 91.9194 25.7122 87.4366 25.7122C82.66 25.7122 79.0591 28.5361 78.3978 33.0691Z" fill="#3B2ED0"/>
+          <path d="M121.87 26.158V53.5794H112.979V26.158H106.732V18.8754H112.979V5.64777H121.87V18.8754H129.146V26.158H121.87Z" fill="#3B2ED0"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M164.903 45.9252C161.963 51.573 155.716 54.3226 148.882 54.3226C143.885 54.3226 139.696 52.6134 136.242 49.2693C132.789 45.8509 131.098 41.4664 131.098 36.1159C131.098 30.7654 132.789 26.4553 136.242 23.1112C139.696 19.7671 143.885 18.1323 148.882 18.1323C153.879 18.1323 157.994 19.7671 161.301 23.1112C164.609 26.4553 166.299 30.7654 166.299 36.1159C166.299 37.0174 166.235 37.9834 166.167 39.0141L166.152 39.2371H139.99C140.578 43.7701 144.399 46.6684 149.47 46.6684C153.072 46.6684 156.525 45.1078 158.069 42.2097L164.903 45.9252ZM139.917 33.0691H157.554C156.893 28.3875 153.439 25.7122 148.956 25.7122C144.179 25.7122 140.578 28.5361 139.917 33.0691Z" fill="#3B2ED0"/>
+          <path d="M180.597 0V53.5794H171.631V0H180.597Z" fill="#3B2ED0"/>
+          <path d="M27.1716 19.3782C27.1716 14.947 30.7321 11.3548 35.1241 11.3548V19.3782C35.1764 19.3959 27.1716 19.3782 27.1716 19.3782Z" fill="#3B2ED0"/>
+          <path d="M34.7984 54.5253C34.7984 64.11 27.2527 71.9206 17.8936 71.9206C8.62804 71.9206 1.13987 64.2655 0.991031 54.8122L0.988777 54.5253H8.94397C8.94397 59.7209 12.9737 63.8921 17.8936 63.8921C22.746 63.8921 26.7325 59.8342 26.8409 54.7381L26.8431 54.5253H34.7984Z" fill="#3B2ED0"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M35.7872 36.4522C35.7872 26.4724 27.7758 18.3822 17.8936 18.3822C8.01121 18.3822 0 26.4724 0 36.4522C0 46.4322 8.01121 54.5224 17.8936 54.5224C27.7758 54.5224 35.7872 46.4322 35.7872 36.4522ZM8.61542 36.4522C8.61542 31.2775 12.7694 27.0826 17.8936 27.0826C23.0178 27.0826 27.1716 31.2775 27.1716 36.4522C27.1716 41.6271 23.0178 45.822 17.8936 45.822C12.7694 45.822 8.61542 41.6271 8.61542 36.4522Z" fill="#3B2ED0"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_849_78">
+          <rect width="181" height="72" fill="white"/>
+          </clipPath>
+          </defs>
+          </svg>
+      </div>
+      <div class="report-title">
+        Synthetic Data Quality Report
+      </div>
+      <div class="console-link">
+        <a href="https://console.gretel.ai/login" class="sign-in">Gretel Sign In <span class="right-arrow"> <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.58923 0.577391C7.2638 0.251954 6.73616 0.251954 6.41072 0.577391C6.08529 0.902828 6.08529 1.43047 6.41072 1.7559L10.8215 6.16665H1.16665C0.706409 6.16665 0.333313 6.53974 0.333313 6.99998C0.333313 7.46022 0.706409 7.83331 1.16665 7.83331H10.8215L6.41072 12.2441C6.08529 12.5695 6.08529 13.0971 6.41072 13.4226C6.73616 13.748 7.2638 13.748 7.58923 13.4226L13.4226 7.58923C13.748 7.2638 13.748 6.73616 13.4226 6.41072L7.58923 0.577391Z" fill="#3B2ED0"/>
+          </svg>
+         </span>
+         </a>
+      </div>
+    </div>
+  <hr>
+    <div class="wrapper">
+
+<div class="section test-report-main-score">
+	<div class="header__container" >
+		<div class="header">
+      <div class="model-name-text">Model</div>
+      <div class="model-name-content">Evaluate Model</div>
+      <div class="model-data">
+        <span class="model-uid-text" > Model UID  </span>
+        <span class="model-uid-content" id="model_uid">66ab3a917f8c64ecfedd2bb1</span>
+        <button class="copy-to-clipboard" title="Copy to Clipboard" aria-expanded="false" onclick="copyModelID()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_2482_3374)">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.33329 6.66666C6.9651 6.66666 6.66663 6.96513 6.66663 7.33332V13.3333C6.66663 13.7015 6.9651 14 7.33329 14H13.3333C13.7015 14 14 13.7015 14 13.3333V7.33332C14 6.96513 13.7015 6.66666 13.3333 6.66666H7.33329ZM5.33329 7.33332C5.33329 6.22875 6.22872 5.33332 7.33329 5.33332H13.3333C14.4379 5.33332 15.3333 6.22875 15.3333 7.33332V13.3333C15.3333 14.4379 14.4379 15.3333 13.3333 15.3333H7.33329C6.22872 15.3333 5.33329 14.4379 5.33329 13.3333V7.33332Z" fill="#3B2ED0"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M2.66663 1.99999C2.48981 1.99999 2.32025 2.07023 2.19522 2.19525C2.0702 2.32028 1.99996 2.48985 1.99996 2.66666V8.66666C1.99996 8.84347 2.0702 9.01304 2.19522 9.13806C2.32025 9.26308 2.48982 9.33332 2.66663 9.33332H3.33329C3.70148 9.33332 3.99996 9.6318 3.99996 9.99999C3.99996 10.3682 3.70148 10.6667 3.33329 10.6667H2.66663C2.13619 10.6667 1.62748 10.4559 1.25241 10.0809C0.87734 9.7058 0.666626 9.19709 0.666626 8.66666V2.66666C0.666626 2.13622 0.87734 1.62752 1.25241 1.25244C1.62749 0.87737 2.13619 0.666656 2.66663 0.666656H8.66663C9.19706 0.666656 9.70577 0.87737 10.0808 1.25244C10.4559 1.62752 10.6666 2.13622 10.6666 2.66666V3.33332C10.6666 3.70151 10.3681 3.99999 9.99996 3.99999C9.63177 3.99999 9.33329 3.70151 9.33329 3.33332V2.66666C9.33329 2.48985 9.26305 2.32028 9.13803 2.19525C9.01301 2.07023 8.84344 1.99999 8.66663 1.99999H2.66663Z" fill="#3B2ED0"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_2482_3374">
+            <rect width="16" height="16" fill="white"/>
+            </clipPath>
+            </defs>
+          </svg>
+        </button>
+        </span>
+        <span class="copied-message" id="copied_message"></span>
+      </div>
+      <div class="project-data">
+        <span class="project-name-text">Project</span>
+        <span class="project-name-content" id="model_uid">Synthesize-Local-MySQL-Database</span>
+      </div>
+      <div class="generation">
+        <span class="model-uid-text">Generated</span>
+        <span class="model-uid-content" id="model_uid">08/01/2024, 07:47</span>
+        </div>
+		</div>
+		<div class="score-container mb-1">
+			<span class="label label__excellent mb-0.5">
+			  Excellent</span>
+			<div id="chart" class="score mb-0.5">
+                <figure><div>                            <div id="05a149f2-159c-4770-893b-63ac7dc2d6f5" class="plotly-graph-div" style="height:180px; width:180px;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("05a149f2-159c-4770-893b-63ac7dc2d6f5")) {                    Plotly.newPlot(                        "05a149f2-159c-4770-893b-63ac7dc2d6f5",                        [{"direction":"clockwise","hole":0.75,"hoverinfo":"none","marker":{"colors":["rgb(229, 60, 26)","rgb(229, 128, 26)","rgb(229, 161, 26)","rgb(183, 210, 45)","rgb(72, 210, 45)","rgba(255, 255, 255, 0)"],"line":{"color":"#fafafa","width":4}},"name":"gauge","rotation":-126,"showlegend":false,"sort":false,"textinfo":"none","textposition":"outside","values":[14,14,14,14,14,30],"type":"pie"},{"domain":{"x":[0,1],"y":[0.28,0.45]},"mode":"number","value":100,"type":"indicator"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"visible":false},"yaxis":{"visible":false},"margin":{"l":0,"r":0,"t":0,"b":0},"autosize":false,"showlegend":false,"height":180,"width":180,"paper_bgcolor":"rgba(0,0,0,0)","hovermode":false,"modebar":{},"shapes":[{"fillcolor":"black","type":"circle","x0":0.475,"x1":0.525,"y0":0.475,"y1":0.525},{"fillcolor":"black","line":{"width":0},"path":"\n    M 0.8730669076497688 0.248363193438164\n    L 0.5139798225867687\n        0.520725939313876\n    L 0.48602017741323134\n        0.47927406068612394\n    Z","type":"path"}]},                        {"displayModeBar": false, "responsive": true}                    )                };                            </script>        </div></figure>
+            </div>
+			<div>
+				<span class="h3">Synthetic Data Quality Score</span>
+				<button data-toggle-singular data-for="synthetic_data_quality_score_more" class="disclosure-toggle" title="Show details" aria-expanded="false">
+					<svg style="pointer-events:none;" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M9 2.25C5.27208 2.25 2.25 5.27208 2.25 9C2.25 12.7279 5.27208 15.75 9 15.75C12.7279 15.75 15.75 12.7279 15.75 9C15.75 5.27208 12.7279 2.25 9 2.25ZM0.75 9C0.75 4.44365 4.44365 0.75 9 0.75C13.5563 0.75 17.25 4.44365 17.25 9C17.25 13.5563 13.5563 17.25 9 17.25C4.44365 17.25 0.75 13.5563 0.75 9Z" fill="currentColor" />
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M9.19359 6.01824C8.84445 5.95835 8.48538 6.02396 8.17998 6.20345C7.87458 6.38294 7.64255 6.66472 7.525 6.99888C7.38755 7.38963 6.95936 7.59495 6.56862 7.4575C6.17788 7.32005 5.97255 6.89186 6.11 6.50112C6.3451 5.83279 6.80915 5.26922 7.41995 4.91025C8.03076 4.55128 8.74889 4.42006 9.44718 4.53983C10.1455 4.6596 10.7788 5.02264 11.2351 5.56465C11.6912 6.10654 11.941 6.79236 11.94 7.50069C11.9398 8.30331 11.5177 8.91677 11.0813 9.33481C10.6448 9.753 10.1273 10.0432 9.76191 10.2182C9.73272 10.2322 9.71152 10.2522 9.69977 10.2695C9.6943 10.2775 9.69186 10.2834 9.69085 10.2866C9.68998 10.2893 9.69 10.2904 9.69 10.2906V10.5C9.69 10.9142 9.35421 11.25 8.94 11.25C8.52579 11.25 8.19 10.9142 8.19 10.5V10.2906C8.19 9.63821 8.60142 9.11092 9.11386 8.86543C9.41119 8.72299 9.76971 8.51412 10.0436 8.2517C10.3175 7.98925 10.44 7.74078 10.44 7.5V7.49888C10.4405 7.14464 10.3157 6.80165 10.0875 6.53065C9.85941 6.25964 9.54273 6.07813 9.19359 6.01824Z" fill="currentColor" />
+						<path d="M9.75 12.75C9.75 13.1642 9.41421 13.5 9 13.5C8.58579 13.5 8.25 13.1642 8.25 12.75C8.25 12.3358 8.58579 12 9 12C9.41421 12 9.75 12.3358 9.75 12.75Z" fill="currentColor" />
+					</svg>
+				</button>
+			</div>
+		</div>
+
+		
+		<div class="score-container mb-1">
+			<span class="label label__privacy__normal mb-0.5">
+			  Normal</span>
+			<div id="chart" class="score mb-0.5">
+                <figure><div>                            <div id="38314e32-5f3b-4c6d-9f54-c0896c1fa282" class="plotly-graph-div" style="height:180px; width:180px;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("38314e32-5f3b-4c6d-9f54-c0896c1fa282")) {                    Plotly.newPlot(                        "38314e32-5f3b-4c6d-9f54-c0896c1fa282",                        [{"direction":"clockwise","hole":0.75,"hoverinfo":"none","marker":{"colors":["rgb(203, 210, 252)","rgb(160, 171, 245)","rgb(124, 135, 233)","rgb(83, 81, 222)","rgb(59, 46, 208)","rgba(255, 255, 255, 0)"],"line":{"color":"#fafafa","width":4}},"name":"gauge","rotation":-126,"showlegend":false,"sort":false,"textinfo":"none","textposition":"outside","values":[14,14,14,14,14,30],"type":"pie"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"visible":false},"yaxis":{"visible":false},"margin":{"l":0,"r":0,"t":0,"b":0},"autosize":false,"showlegend":false,"height":180,"width":180,"paper_bgcolor":"rgba(0,0,0,0)","hovermode":false,"modebar":{},"shapes":[{"fillcolor":"black","type":"circle","x0":0.475,"x1":0.525,"y0":0.475,"y1":0.525},{"fillcolor":"black","line":{"width":0},"path":"\n    M 0.1573077616084685 0.791653955478409\n    L 0.4837970024734217\n        0.48096154231158156\n    L 0.5162029975265783\n        0.5190384576884184\n    Z","type":"path"}]},                        {"displayModeBar": false, "responsive": true}                    )                };                            </script>        </div></figure>
+            </div>
+			<div>
+				<span class="h3">Privacy Protection Level</span>
+				<button data-toggle-singular class="disclosure-toggle" data-for="ppl_disclosure" title="Show details" aria-expanded="false">
+					<svg style="pointer-events:none;" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M9 2.25C5.27208 2.25 2.25 5.27208 2.25 9C2.25 12.7279 5.27208 15.75 9 15.75C12.7279 15.75 15.75 12.7279 15.75 9C15.75 5.27208 12.7279 2.25 9 2.25ZM0.75 9C0.75 4.44365 4.44365 0.75 9 0.75C13.5563 0.75 17.25 4.44365 17.25 9C17.25 13.5563 13.5563 17.25 9 17.25C4.44365 17.25 0.75 13.5563 0.75 9Z" fill="currentColor" />
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M9.19359 6.01824C8.84445 5.95835 8.48538 6.02396 8.17998 6.20345C7.87458 6.38294 7.64255 6.66472 7.525 6.99888C7.38755 7.38963 6.95936 7.59495 6.56862 7.4575C6.17788 7.32005 5.97255 6.89186 6.11 6.50112C6.3451 5.83279 6.80915 5.26922 7.41995 4.91025C8.03076 4.55128 8.74889 4.42006 9.44718 4.53983C10.1455 4.6596 10.7788 5.02264 11.2351 5.56465C11.6912 6.10654 11.941 6.79236 11.94 7.50069C11.9398 8.30331 11.5177 8.91677 11.0813 9.33481C10.6448 9.753 10.1273 10.0432 9.76191 10.2182C9.73272 10.2322 9.71152 10.2522 9.69977 10.2695C9.6943 10.2775 9.69186 10.2834 9.69085 10.2866C9.68998 10.2893 9.69 10.2904 9.69 10.2906V10.5C9.69 10.9142 9.35421 11.25 8.94 11.25C8.52579 11.25 8.19 10.9142 8.19 10.5V10.2906C8.19 9.63821 8.60142 9.11092 9.11386 8.86543C9.41119 8.72299 9.76971 8.51412 10.0436 8.2517C10.3175 7.98925 10.44 7.74078 10.44 7.5V7.49888C10.4405 7.14464 10.3157 6.80165 10.0875 6.53065C9.85941 6.25964 9.54273 6.07813 9.19359 6.01824Z" fill="currentColor" />
+						<path d="M9.75 12.75C9.75 13.1642 9.41421 13.5 9 13.5C8.58579 13.5 8.25 13.1642 8.25 12.75C8.25 12.3358 8.58579 12 9 12C9.41421 12 9.75 12.3358 9.75 12.75Z" fill="currentColor" />
+					</svg>
+				</button>
+			</div>
+		</div>
+		
+	</div>
+
+	  
+    
+
+	<div id="sdqs_disclosure" class="disclosure-message__wrap">
+	    
+<p class="disclosure-message">
+The Synthetic Data Quality Score is computed by taking a weighted combination of the
+individual quality metrics: Field Distribution Stability, Field Correlation Stability
+and Deep Structure Stability.
+    
+      <a href="#" data-toggle-singular data-for="synthetic_data_quality_score_more" data-expanded="Hide additional info" data-notexpanded="Learn more about Synthetic Data Quality Score (SQS)" aria-expanded="false">Learn more about Synthetic Data Quality Score (SQS)</a>
+	    
+      <div id="synthetic_data_quality_score_more" hidden>
+      
+<p class="disclosure-message">
+The Synthetic Data Quality Score is an estimate of how well the generated synthetic data maintains the same
+statistical properties as the original dataset.  In this sense,
+the Synthetic Data Quality Score can be viewed as a utility score or a confidence score as to whether
+scientific conclusions drawn from the synthetic dataset would be the same if one were to have used the original dataset
+instead.  If you do not require statistical symmetry, as might be the case in a testing or demo environment, a lower 
+score may be just as acceptable.
+<p class="disclosure-message">
+If your Synthetic Data Quality Score isn't as high as you'd like it to be, 
+<a href="https://docs.gretel.ai/reference/synthetics/tips-improve-synthetic-data-accuracy" target=”_blank” rel=”noopener”>read here</a> 
+for a multitude of ideas for improving your model.
+    
+      <p class="disclosure-message">
+	    <table class="disclosure-table">
+          <tr>
+            <th style="border-right: 1px solid #e5e5e6">How to interpret your SQS</th>
+            <td class="data-quality-table">
+              <span class="label label__excellent m-0.25">Excellent</span>
+            </td>
+            <td class="data-quality-table">
+              <span class="label label__good m-0.25">Good</span>
+            </td>
+            <td class="data-quality-table">
+              <span class="label label__moderate m-0.25">Moderate</span>
+            </td>
+            <td class="data-quality-table">
+              <span class="label label__poor m-0.25">Poor</span>
+            </td>
+            <td class="data-quality-table">
+              <span class="label label__very-poor m-0.25">Very Poor</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Suitable for machine learning or statistical analysis</td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+          </tr>
+          <tr>
+            <td>Suitable for balancing or augmenting machine learning data sources</td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+          </tr>
+          <tr>
+            <td>Suitable for pre-production testing environments</td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+          </tr>
+          <tr>
+            <td>Suitable for demo environments or mock data</td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+          </tr>
+          <tr>
+            <td>Improve your model using our tips and advice</td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+          </tr>
+          <tr>
+            <td>Significant tuning required to improve model</td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+          </tr>
+	    </table>
+      </div>
+	</div>
+
+	
+	<div id="ppl_disclosure" class="disclosure-message__wrap" hidden>
+	    <p class="disclosure-message">
+	    <table class="disclosure-table">
+          <tr>
+            <th style="border-right: 1px solid #e5e5e6">Data Sharing Use Case</th>
+            <td class="data-quality-table">
+              <span class="label label__privacy__excellent m-0.25">Excellent</span>
+            </td>
+            <td class="data-quality-table">
+              <span class="label label__privacy__very-good m-0.25">Very Good</span>
+            </td>
+            <td class="data-quality-table">
+              <span class="label label__privacy__good m-0.25">Good</span>
+            </td>
+            <td class="data-quality-table">
+              <span class="label label__privacy__normal m-0.25">Normal</span>
+            </td>
+            <td class="data-quality-table">
+              <span class="label label__privacy__poor m-0.25">Poor</span>
+            </td>
+          </tr>
+          <tr>
+            <td>Internally, within the same team</td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+          </tr>
+          <tr>
+            <td>Internally, across different teams</td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+          </tr>
+          <tr>
+            <td>Externally, with trusted partners</td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+          </tr>
+          <tr>
+            <td>Externally, public availability</td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" fill="#CBD2FC"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#CBD2FC"/>
+        <path d="M12 15.8461C14.1242 15.8461 15.8461 14.1242 15.8461 12C15.8461 9.87582 14.1242 8.15384 12 8.15384C9.87582 8.15384 8.15384 9.87582 8.15384 12C8.15384 14.1242 9.87582 15.8461 12 15.8461Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#3B2ED0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+            <td class="data-quality-table">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#CFD0DD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </td>
+          </tr>
+	    </table>
+		</p>
+    
+<p class="disclosure-message">
+Your Privacy Protection Level (PPL) is determined by the privacy mechanisms you've enabled in the synthetic 
+configuration. The use of these mechanisms help to ensure that your synthetic data is safe from adversarial 
+attacks. There are four primary protection mechanisms you can add to the creation of synthetic data. 
+
+<ul class="mt-1">
+<li class="mt-0.5">
+The Outlier Filter ensures that no synthetic record is an outlier with respect the training space, and is 
+enabled with the <span class="disclosure-mono">privacy_filters.outliers: [medium, high]</span>.
+</li>
+
+<li class="mt-0.5">
+The Similarity Filter ensures that no synthetic record is overly similar to a training record. This filter is 
+enabled in the configuration by setting <span class="disclosure-mono">privacy_filters.similarity: [medium, high]</span>. 
+</li>
+
+<li class="mt-0.5">
+You can also set privacy_filters.outliers to <span class="disclosure-mono">auto</span> which will try for 
+<span class="disclosure-mono">medium</span>, and fall back to turning the filter 
+off if it prevents the synthetic model from generating the requested number of records.
+</li>
+
+<li class="mt-0.5">
+Overfitting Prevention ensures that model training stops before it has a chance to overfit and is enabled 
+using the <span class="disclosure-mono">validation_split: True</span> and 
+<span class="disclosure-mono">early_stopping: True</span> configuration settings. 
+</li>
+
+<li class="mt-0.5">
+Differential Privacy is an experimental implementation of DP-SGD that modifies the optimizer to offer provable
+guarantees of privacy, enabling safe training on private data. Differential Privacy can cause a hit to utility, often
+requiring larger datasets to work well, but it uniquely provides privacy guarantees against both known and unknown
+attacks on data. Differential Privacy can be enabled by setting <span class="disclosure-mono">dp: True</span> and can
+be modified using the associated configuration settings.
+</li>
+</ul>
+    
+	</div>
+	
+
+</div>
+
+
+    <section class=test-section-df-shape>
+      <h2>Data Summary Statistics</h2>
+	  <div class="grid">
+		<div class="grid__cell py-2">
+		    <div class="grid__cell__row" style="width: 260 px">
+		      <span style="flex: 3.5"></span>
+			  <span class="label label__excellent">
+			    Excellent
+			  </span>
+		      <span style="flex: 3"></span>
+			  <button data-toggle-singular class="disclosure-toggle grid__cell__row__button" data-for="fcs_disclosure" title="Show details" aria-expanded="false">
+				<svg style="pointer-events:none;" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+				  <path fill-rule="evenodd" clip-rule="evenodd" d="M9 2.25C5.27208 2.25 2.25 5.27208 2.25 9C2.25 12.7279 5.27208 15.75 9 15.75C12.7279 15.75 15.75 12.7279 15.75 9C15.75 5.27208 12.7279 2.25 9 2.25ZM0.75 9C0.75 4.44365 4.44365 0.75 9 0.75C13.5563 0.75 17.25 4.44365 17.25 9C17.25 13.5563 13.5563 17.25 9 17.25C4.44365 17.25 0.75 13.5563 0.75 9Z" fill="currentColor" />
+				  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.19359 6.01824C8.84445 5.95835 8.48538 6.02396 8.17998 6.20345C7.87458 6.38294 7.64255 6.66472 7.525 6.99888C7.38755 7.38963 6.95936 7.59495 6.56862 7.4575C6.17788 7.32005 5.97255 6.89186 6.11 6.50112C6.3451 5.83279 6.80915 5.26922 7.41995 4.91025C8.03076 4.55128 8.74889 4.42006 9.44718 4.53983C10.1455 4.6596 10.7788 5.02264 11.2351 5.56465C11.6912 6.10654 11.941 6.79236 11.94 7.50069C11.9398 8.30331 11.5177 8.91677 11.0813 9.33481C10.6448 9.753 10.1273 10.0432 9.76191 10.2182C9.73272 10.2322 9.71152 10.2522 9.69977 10.2695C9.6943 10.2775 9.69186 10.2834 9.69085 10.2866C9.68998 10.2893 9.69 10.2904 9.69 10.2906V10.5C9.69 10.9142 9.35421 11.25 8.94 11.25C8.52579 11.25 8.19 10.9142 8.19 10.5V10.2906C8.19 9.63821 8.60142 9.11092 9.11386 8.86543C9.41119 8.72299 9.76971 8.51412 10.0436 8.2517C10.3175 7.98925 10.44 7.74078 10.44 7.5V7.49888C10.4405 7.14464 10.3157 6.80165 10.0875 6.53065C9.85941 6.25964 9.54273 6.07813 9.19359 6.01824Z" fill="currentColor" />
+				  <path d="M9.75 12.75C9.75 13.1642 9.41421 13.5 9 13.5C8.58579 13.5 8.25 13.1642 8.25 12.75C8.25 12.3358 8.58579 12 9 12C9.41421 12 9.75 12.3358 9.75 12.75Z" fill="currentColor" />
+				</svg>
+			  </button>
+			</div>
+			<div class="ring" data-score=100>
+                <figure><div>                            <div id="51ec8e49-79be-4117-a714-efb84c2a8066" class="plotly-graph-div" style="height:90px; width:90px;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("51ec8e49-79be-4117-a714-efb84c2a8066")) {                    Plotly.newPlot(                        "51ec8e49-79be-4117-a714-efb84c2a8066",                        [{"domain":{"x":[0,1],"y":[0.4,0.65]},"mode":"number","value":100,"type":"indicator"},{"direction":"clockwise","hole":0.65,"hoverinfo":"none","marker":{"colors":["rgb(72, 210, 45)","rgb(220, 220, 220)","rgba(255, 255, 255, 0)"],"line":{"color":"white","width":0}},"name":"Ring","rotation":-126,"sort":false,"textinfo":"none","textposition":"outside","values":[70.0,0.0,30],"type":"pie"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"visible":false},"yaxis":{"visible":false},"margin":{"l":0,"r":0,"t":0,"b":0},"showlegend":false,"height":90,"width":90,"paper_bgcolor":"rgba(0,0,0,0)","hovermode":false,"modebar":{}},                        {"displayModeBar": false, "responsive": true}                    )                };                            </script>        </div></figure>
+			</div>
+			<span class="h4">Field Correlation Stability</span>
+		</div>
+		<div class="grid__cell py-2">
+		    <div class="grid__cell__row">
+		      <span style="flex: 3.5"></span>
+			  <span class="label label__unavailable">
+			    Unavailable
+			  </span>
+		      <span style="flex: 3"></span>
+			  <button data-toggle-singular class="disclosure-toggle grid__cell__row__button" data-for="pcs_disclosure" title="Show details" aria-expanded="false">
+				<svg style="pointer-events:none;" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+				  <path fill-rule="evenodd" clip-rule="evenodd" d="M9 2.25C5.27208 2.25 2.25 5.27208 2.25 9C2.25 12.7279 5.27208 15.75 9 15.75C12.7279 15.75 15.75 12.7279 15.75 9C15.75 5.27208 12.7279 2.25 9 2.25ZM0.75 9C0.75 4.44365 4.44365 0.75 9 0.75C13.5563 0.75 17.25 4.44365 17.25 9C17.25 13.5563 13.5563 17.25 9 17.25C4.44365 17.25 0.75 13.5563 0.75 9Z" fill="currentColor" />
+				  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.19359 6.01824C8.84445 5.95835 8.48538 6.02396 8.17998 6.20345C7.87458 6.38294 7.64255 6.66472 7.525 6.99888C7.38755 7.38963 6.95936 7.59495 6.56862 7.4575C6.17788 7.32005 5.97255 6.89186 6.11 6.50112C6.3451 5.83279 6.80915 5.26922 7.41995 4.91025C8.03076 4.55128 8.74889 4.42006 9.44718 4.53983C10.1455 4.6596 10.7788 5.02264 11.2351 5.56465C11.6912 6.10654 11.941 6.79236 11.94 7.50069C11.9398 8.30331 11.5177 8.91677 11.0813 9.33481C10.6448 9.753 10.1273 10.0432 9.76191 10.2182C9.73272 10.2322 9.71152 10.2522 9.69977 10.2695C9.6943 10.2775 9.69186 10.2834 9.69085 10.2866C9.68998 10.2893 9.69 10.2904 9.69 10.2906V10.5C9.69 10.9142 9.35421 11.25 8.94 11.25C8.52579 11.25 8.19 10.9142 8.19 10.5V10.2906C8.19 9.63821 8.60142 9.11092 9.11386 8.86543C9.41119 8.72299 9.76971 8.51412 10.0436 8.2517C10.3175 7.98925 10.44 7.74078 10.44 7.5V7.49888C10.4405 7.14464 10.3157 6.80165 10.0875 6.53065C9.85941 6.25964 9.54273 6.07813 9.19359 6.01824Z" fill="currentColor" />
+				  <path d="M9.75 12.75C9.75 13.1642 9.41421 13.5 9 13.5C8.58579 13.5 8.25 13.1642 8.25 12.75C8.25 12.3358 8.58579 12 9 12C9.41421 12 9.75 12.3358 9.75 12.75Z" fill="currentColor" />
+				</svg>
+			  </button>
+			</div>
+			<div class="ring" data-score=None>
+                <figure><div>                            <div id="34287c40-28c9-4e57-9890-cd8f0467be1f" class="plotly-graph-div" style="height:90px; width:90px;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("34287c40-28c9-4e57-9890-cd8f0467be1f")) {                    Plotly.newPlot(                        "34287c40-28c9-4e57-9890-cd8f0467be1f",                        [{"direction":"clockwise","hole":0.65,"hoverinfo":"none","marker":{"colors":["rgb(229, 60, 26)","rgb(220, 220, 220)","rgba(255, 255, 255, 0)"],"line":{"color":"white","width":0}},"name":"Ring","rotation":-126,"sort":false,"textinfo":"none","textposition":"outside","values":[0.0,70.0,30],"type":"pie"}],                        {"annotations":[{"font":{"color":"rgba(174, 95, 5, 1)","size":18},"showarrow":false,"text":"N/A","x":0.5,"xref":"paper","y":0.5,"yref":"paper"}],"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"visible":false},"yaxis":{"visible":false},"margin":{"l":0,"r":0,"t":0,"b":0},"showlegend":false,"height":90,"width":90,"paper_bgcolor":"rgba(0,0,0,0)","hovermode":false,"modebar":{}},                        {"displayModeBar": false, "responsive": true}                    )                };                            </script>        </div></figure>
+			</div>
+			<span class="h4">Deep Structure Stability</span>
+		</div>
+		<div class="grid__cell py-2">
+		    <div class="grid__cell__row">
+		      <span style="flex: 3.5"></span>
+			  <span class="label label__excellent">
+			    Excellent
+			  </span>
+		      <span style="flex: 3"></span>
+			  <button data-toggle-singular class="disclosure-toggle grid__cell__row__button" data-for="fds_disclosure" title="Show details" aria-expanded="false">
+				<svg style="pointer-events:none;" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+			  	  <path fill-rule="evenodd" clip-rule="evenodd" d="M9 2.25C5.27208 2.25 2.25 5.27208 2.25 9C2.25 12.7279 5.27208 15.75 9 15.75C12.7279 15.75 15.75 12.7279 15.75 9C15.75 5.27208 12.7279 2.25 9 2.25ZM0.75 9C0.75 4.44365 4.44365 0.75 9 0.75C13.5563 0.75 17.25 4.44365 17.25 9C17.25 13.5563 13.5563 17.25 9 17.25C4.44365 17.25 0.75 13.5563 0.75 9Z" fill="currentColor" />
+				  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.19359 6.01824C8.84445 5.95835 8.48538 6.02396 8.17998 6.20345C7.87458 6.38294 7.64255 6.66472 7.525 6.99888C7.38755 7.38963 6.95936 7.59495 6.56862 7.4575C6.17788 7.32005 5.97255 6.89186 6.11 6.50112C6.3451 5.83279 6.80915 5.26922 7.41995 4.91025C8.03076 4.55128 8.74889 4.42006 9.44718 4.53983C10.1455 4.6596 10.7788 5.02264 11.2351 5.56465C11.6912 6.10654 11.941 6.79236 11.94 7.50069C11.9398 8.30331 11.5177 8.91677 11.0813 9.33481C10.6448 9.753 10.1273 10.0432 9.76191 10.2182C9.73272 10.2322 9.71152 10.2522 9.69977 10.2695C9.6943 10.2775 9.69186 10.2834 9.69085 10.2866C9.68998 10.2893 9.69 10.2904 9.69 10.2906V10.5C9.69 10.9142 9.35421 11.25 8.94 11.25C8.52579 11.25 8.19 10.9142 8.19 10.5V10.2906C8.19 9.63821 8.60142 9.11092 9.11386 8.86543C9.41119 8.72299 9.76971 8.51412 10.0436 8.2517C10.3175 7.98925 10.44 7.74078 10.44 7.5V7.49888C10.4405 7.14464 10.3157 6.80165 10.0875 6.53065C9.85941 6.25964 9.54273 6.07813 9.19359 6.01824Z" fill="currentColor" />
+				  <path d="M9.75 12.75C9.75 13.1642 9.41421 13.5 9 13.5C8.58579 13.5 8.25 13.1642 8.25 12.75C8.25 12.3358 8.58579 12 9 12C9.41421 12 9.75 12.3358 9.75 12.75Z" fill="currentColor" />
+				</svg>
+			  </button>
+			</div>
+			<div class="ring" data-score=100>
+                <figure><div>                            <div id="30cc2f70-3366-4691-8aa1-96b33ed6901d" class="plotly-graph-div" style="height:90px; width:90px;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("30cc2f70-3366-4691-8aa1-96b33ed6901d")) {                    Plotly.newPlot(                        "30cc2f70-3366-4691-8aa1-96b33ed6901d",                        [{"domain":{"x":[0,1],"y":[0.4,0.65]},"mode":"number","value":100,"type":"indicator"},{"direction":"clockwise","hole":0.65,"hoverinfo":"none","marker":{"colors":["rgb(72, 210, 45)","rgb(220, 220, 220)","rgba(255, 255, 255, 0)"],"line":{"color":"white","width":0}},"name":"Ring","rotation":-126,"sort":false,"textinfo":"none","textposition":"outside","values":[70.0,0.0,30],"type":"pie"}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"visible":false},"yaxis":{"visible":false},"margin":{"l":0,"r":0,"t":0,"b":0},"showlegend":false,"height":90,"width":90,"paper_bgcolor":"rgba(0,0,0,0)","hovermode":false,"modebar":{}},                        {"displayModeBar": false, "responsive": true}                    )                };                            </script>        </div></figure>
+			</div>
+			<span class="h4">Field Distribution Stability</span>
+		</div>
+	  </div>
+
+	  <div>
+		<div id="fcs_disclosure" class="disclosure-message__wrap" hidden>
+		    
+<p class="disclosure-message">
+To measure Field Correlation Stability, the correlation between every pair of fields is computed first in the
+training data, and then in the synthetic data. The absolute difference between these values is then computed and
+averaged across all fields. The lower this average value is, the higher the Field Correlation Stability quality
+score will be.  To aid in the comparison of field correlations, a heatmap is shown for both the training data and
+the synthetic data, as well as a heatmap for the computed difference of correlation values. If the intended purpose
+of the synthetic data is to perform statistical analysis or machine learning, maintaining the integrity of field
+correlations can be critical.
+<p class="disclosure-message">
+<a href="https://docs.gretel.ai/reference/synthetics/gretel-synthetic-report#field-correlation-stability"  target=”_blank” rel=”noopener”>Read more</a>
+    
+		</div>
+		<div id="pcs_disclosure" class="disclosure-message__wrap" hidden>
+		    
+<p class="disclosure-message">
+To verify the statistical integrity of deeper, multi-field distributions and correlations, Gretel compares a
+Principal Component Analysis (PCA) computed first on the original data, then again on the synthetic data. A synthetic
+quality score is created by comparing the distributional distance between the principal components found in each
+dataset. The closer the principal components are, the higher the synthetic quality score will be.  As PCA is a very
+common approach used in machine learning for both dimensionality reduction and visualization, this metric gives
+immediate feedback as to the utility of the synthetic data for machine learning purposes.
+<p class="disclosure-message">
+<a href="https://docs.gretel.ai/reference/synthetics/gretel-synthetic-report#deep-structure-stability"  target=”_blank” rel=”noopener”>Read more</a>
+    
+		</div>
+		<div id="fds_disclosure" class="disclosure-message__wrap" hidden>
+		    
+<p class="disclosure-message">
+Field Distribution Stability is a measure of how closely the field distributions in the synthetic data mirror those 
+in the original data. For each numeric or categorical field we use a common approach for comparing two distributions 
+referred to as the Jensen-Shannon Distance. The lower the JS Distance score is on average across all fields, the 
+higher the Field Distribution Stability quality score will be. Note, highly unique strings (neither numeric or 
+categorical) will not have a distributional distance score. To aid in the comparison of original versus synthetic 
+field distributions, a bar chart or histogram is shown for each numeric or categorical field. Depending on the 
+intended purpose of the synthetic data, maintaining the integrity of field distributions can be critical.
+<p class="disclosure-message">
+<a href="https://docs.gretel.ai/reference/synthetics/gretel-synthetic-report#field-distribution-stability"  target=”_blank” rel=”noopener”>Read more</a>
+    
+		</div>
+	  </div>
+
+	  
+	  <div class="score-error-banner">
+	    <div class="score-error-icon">&#9888;</div>
+	    <div class="score-error-text">
+	    
+	    <span class="score-error-header"><b>Score unavailable - Deep Structure Stability</b></span>
+	    <br>
+	    <span>
+	      We are unable to provide this score due to an unknown issue.  Please contact us at
+	      <a class="score-error-support-link" href="mailto:support@gretel.ai">support@gretel.ai</a>
+	      and we will get back to you ASAP.
+	    </span>
+	    
+	    </div>
+	  </div>
+	  
+
+      <div>
+        <table>
+          <tr>
+            <th></th>
+            <th class="tnum">Training Data</th>
+            <th class="tnum">Synthetic Data</th>
+          </tr>
+          <tr>
+            <td>Row Count</td>
+            <td class="tnum">10</td>
+            <td class="tnum">10</td>
+          </tr>
+          <tr>
+            <td>Column Count</td>
+            <td class="tnum">1</td>
+            <td class="tnum">1</td>
+          </tr>
+          <tr>
+            <td>Training Lines Duplicated</td>
+            <td class="tnum">--</td>
+            <td class="tnum">4</td>
+          </tr>
+        </table>
+      </div>
+      <p>
+        <a href="#" data-toggle-singular data-for="data_summary_disclosure" aria-expanded="false">What do these values mean?</a>
+      </p>
+      <div id="data_summary_disclosure" class="disclosure-message__wrap" hidden>
+        
+<p class="disclosure-message">
+The row count is the number of records or lines in the training (or synthetic) dataset. The column count is the 
+number of fields in the dataset. The number of training rows used can directly impact the quality of the synthetic 
+data created. The more examples available when training a model, the easier it is for the model to accurately learn 
+the distributions and correlations in the data. Always strive to have a minimum of 3000 training examples, but 
+increasing that to 5000 or even 50,000 is even better.
+<p class="disclosure-message">
+The more synthetic rows generated, the easier it is to deduce whether the statistical integrity of the data remains 
+intact. If your Synthetic Data Quality Score isn't as high as you'd like it to be, make sure you’ve generated at 
+least 5000 synthetic data records.
+<p class="disclosure-message">
+The Training Lines Duplicated value is an important way of ensuring the privacy of the generated synthetic data. 
+In almost all situations, this value should be 0. The only exception would be if the training data itself contained 
+a multitude of duplicate rows. If this is the situation, simply remove the duplicate rows before training.
+    
+      </div>
+    </section>
+
+    
+    
+
+	
+    <section class=test-privacy-protection-summary>
+        <h2>Privacy Protection Summary</h2>
+        <table class="py-2">
+            <tr>
+                <th width="75%" style="text-align: center">Default Privacy Protections</th>
+                <th style="text-align: center">Advanced Protections</th>
+            </tr>
+        </table>
+	  <div class="grid-pps">
+		<div class="grid__cell py-2">
+		    <div class="grid__cell__row" style="width: 195 px">
+		      <span style="flex: 3.5"></span>
+			  <button data-toggle-singular class="disclosure-toggle grid__cell__row__button" data-for="of_disclosure" title="Show details" aria-expanded="false">
+				<svg style="pointer-events:none;" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+				  <path fill-rule="evenodd" clip-rule="evenodd" d="M9 2.25C5.27208 2.25 2.25 5.27208 2.25 9C2.25 12.7279 5.27208 15.75 9 15.75C12.7279 15.75 15.75 12.7279 15.75 9C15.75 5.27208 12.7279 2.25 9 2.25ZM0.75 9C0.75 4.44365 4.44365 0.75 9 0.75C13.5563 0.75 17.25 4.44365 17.25 9C17.25 13.5563 13.5563 17.25 9 17.25C4.44365 17.25 0.75 13.5563 0.75 9Z" fill="currentColor" />
+				  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.19359 6.01824C8.84445 5.95835 8.48538 6.02396 8.17998 6.20345C7.87458 6.38294 7.64255 6.66472 7.525 6.99888C7.38755 7.38963 6.95936 7.59495 6.56862 7.4575C6.17788 7.32005 5.97255 6.89186 6.11 6.50112C6.3451 5.83279 6.80915 5.26922 7.41995 4.91025C8.03076 4.55128 8.74889 4.42006 9.44718 4.53983C10.1455 4.6596 10.7788 5.02264 11.2351 5.56465C11.6912 6.10654 11.941 6.79236 11.94 7.50069C11.9398 8.30331 11.5177 8.91677 11.0813 9.33481C10.6448 9.753 10.1273 10.0432 9.76191 10.2182C9.73272 10.2322 9.71152 10.2522 9.69977 10.2695C9.6943 10.2775 9.69186 10.2834 9.69085 10.2866C9.68998 10.2893 9.69 10.2904 9.69 10.2906V10.5C9.69 10.9142 9.35421 11.25 8.94 11.25C8.52579 11.25 8.19 10.9142 8.19 10.5V10.2906C8.19 9.63821 8.60142 9.11092 9.11386 8.86543C9.41119 8.72299 9.76971 8.51412 10.0436 8.2517C10.3175 7.98925 10.44 7.74078 10.44 7.5V7.49888C10.4405 7.14464 10.3157 6.80165 10.0875 6.53065C9.85941 6.25964 9.54273 6.07813 9.19359 6.01824Z" fill="currentColor" />
+				  <path d="M9.75 12.75C9.75 13.1642 9.41421 13.5 9 13.5C8.58579 13.5 8.25 13.1642 8.25 12.75C8.25 12.3358 8.58579 12 9 12C9.41421 12 9.75 12.3358 9.75 12.75Z" fill="currentColor" />
+				</svg>
+			  </button>
+			</div>
+			<div class="icon-wrapper">
+
+<svg width="90" height="90" viewBox="0 0 257 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-270,0)">
+        <g id="Outliers" transform="matrix(1,0,0,1,270.006,0)">
+            <rect x="0" y="0" width="256" height="256" style="fill:none;"/>
+            <g transform="matrix(1,0,0,1.5,-270.006,-38)">
+                <path d="M302.006,117.333C401.047,135.326 395.755,87.73 494.006,82.667" style="fill:none;stroke:rgb(121,66,250);stroke-width:6.28px;"/>
+            </g>
+            <g transform="matrix(1.91199,0,0,1.91199,-709.226,-127.567)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+            <g transform="matrix(1.91199,0,0,1.91199,-671.893,-153.418)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+            <g transform="matrix(1.91199,0,0,1.91199,-708.532,-267.739)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(177,176,181);"/>
+            </g>
+            <g transform="matrix(1.91199,0,0,1.91199,-626.683,-133.437)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+            <g transform="matrix(1.91199,0,0,1.91199,-619.23,-190.13)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+            <g transform="matrix(1.91199,0,0,1.91199,-652.353,-264.117)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(177,176,181);"/>
+            </g>
+            <g transform="matrix(1.91199,0,0,1.91199,-585.294,-162.235)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+            <g transform="matrix(1.91199,0,0,1.91199,-629.72,-161.457)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+            <g transform="matrix(1.91199,0,0,1.91199,-743.042,-225.567)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(177,176,181);"/>
+            </g>
+            <g transform="matrix(1.91199,0,0,1.91199,-731.042,-149.511)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+            <g transform="matrix(1.91199,0,0,1.91199,-752.016,-122.314)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-270.006,0)">
+                <path d="M302.006,32L302.006,211.994C302.006,215.179 303.271,218.232 305.523,220.484C307.774,222.735 310.828,224 314.012,224L494.006,224" style="fill:none;stroke:rgb(210,193,253);stroke-width:8px;"/>
+            </g>
+        </g>
+    </g>
+</svg>
+
+                <div class="icon-status">
+                
+                  
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3.33331" y="3.33331" width="31.6667" height="31.6667" rx="15.8333" fill="white"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M20 5.00002C11.7157 5.00002 5.00002 11.7157 5.00002 20C5.00002 28.2843 11.7157 35 20 35C28.2843 35 35 28.2843 35 20C35 11.7157 28.2843 5.00002 20 5.00002ZM1.66669 20C1.66669 9.8748 9.8748 1.66669 20 1.66669C30.1252 1.66669 38.3334 9.8748 38.3334 20C38.3334 30.1252 30.1252 38.3334 20 38.3334C9.8748 38.3334 1.66669 30.1252 1.66669 20Z" fill="#CBCACE"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8333 20C10.8333 19.0795 11.5795 18.3333 12.5 18.3333H26.6666C27.5871 18.3333 28.3333 19.0795 28.3333 20C28.3333 20.9205 27.5871 21.6666 26.6666 21.6666H12.5C11.5795 21.6666 10.8333 20.9205 10.8333 20Z" fill="#CBCACD"/>
+        </svg>
+    
+                
+                </div>
+			</div>
+			<span class="h4">Outlier Filter</span>
+			<span class="label privacy-level">
+			  Disabled
+			</span>
+		    <span style="flex: 3"></span>
+		</div>
+		<div class="grid__cell py-2">
+		    <div class="grid__cell__row" style="width: 195 px">
+		      <span style="flex: 3.5"></span>
+			  <button data-toggle-singular class="disclosure-toggle grid__cell__row__button" data-for="sf_disclosure" title="Show details" aria-expanded="false">
+				<svg style="pointer-events:none;" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+				  <path fill-rule="evenodd" clip-rule="evenodd" d="M9 2.25C5.27208 2.25 2.25 5.27208 2.25 9C2.25 12.7279 5.27208 15.75 9 15.75C12.7279 15.75 15.75 12.7279 15.75 9C15.75 5.27208 12.7279 2.25 9 2.25ZM0.75 9C0.75 4.44365 4.44365 0.75 9 0.75C13.5563 0.75 17.25 4.44365 17.25 9C17.25 13.5563 13.5563 17.25 9 17.25C4.44365 17.25 0.75 13.5563 0.75 9Z" fill="currentColor" />
+				  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.19359 6.01824C8.84445 5.95835 8.48538 6.02396 8.17998 6.20345C7.87458 6.38294 7.64255 6.66472 7.525 6.99888C7.38755 7.38963 6.95936 7.59495 6.56862 7.4575C6.17788 7.32005 5.97255 6.89186 6.11 6.50112C6.3451 5.83279 6.80915 5.26922 7.41995 4.91025C8.03076 4.55128 8.74889 4.42006 9.44718 4.53983C10.1455 4.6596 10.7788 5.02264 11.2351 5.56465C11.6912 6.10654 11.941 6.79236 11.94 7.50069C11.9398 8.30331 11.5177 8.91677 11.0813 9.33481C10.6448 9.753 10.1273 10.0432 9.76191 10.2182C9.73272 10.2322 9.71152 10.2522 9.69977 10.2695C9.6943 10.2775 9.69186 10.2834 9.69085 10.2866C9.68998 10.2893 9.69 10.2904 9.69 10.2906V10.5C9.69 10.9142 9.35421 11.25 8.94 11.25C8.52579 11.25 8.19 10.9142 8.19 10.5V10.2906C8.19 9.63821 8.60142 9.11092 9.11386 8.86543C9.41119 8.72299 9.76971 8.51412 10.0436 8.2517C10.3175 7.98925 10.44 7.74078 10.44 7.5V7.49888C10.4405 7.14464 10.3157 6.80165 10.0875 6.53065C9.85941 6.25964 9.54273 6.07813 9.19359 6.01824Z" fill="currentColor" />
+				  <path d="M9.75 12.75C9.75 13.1642 9.41421 13.5 9 13.5C8.58579 13.5 8.25 13.1642 8.25 12.75C8.25 12.3358 8.58579 12 9 12C9.41421 12 9.75 12.3358 9.75 12.75Z" fill="currentColor" />
+				</svg>
+			  </button>
+			</div>
+			<div class="icon-wrapper">
+
+<svg width="90" height="90" viewBox="0 0 257 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-551,0)">
+        <g id="Similartiy" transform="matrix(1,0,0,1,551.655,0)">
+            <rect x="0" y="0" width="256" height="256" style="fill:none;"/>
+            <g transform="matrix(0.890182,0,0,0.798545,-499.13,-75.2138)">
+                <path d="M631.655,128L679.655,224L583.655,224L631.655,128Z" style="fill:none;stroke:rgb(121,66,250);stroke-width:9.46px;"/>
+            </g>
+            <g transform="matrix(0.890182,0,0,0.798545,-369.445,-75.2138)">
+                <path d="M631.655,128L679.655,224L583.655,224L631.655,128Z" style="fill:none;stroke:rgb(121,66,250);stroke-width:9.46px;"/>
+            </g>
+            <g transform="matrix(0.890182,0,0,0.798545,-369.445,44.6335)">
+                <path d="M631.655,128L679.655,224L583.655,224L631.655,128Z" style="fill:none;stroke:rgb(121,66,250);stroke-width:9.46px;"/>
+            </g>
+            <g transform="matrix(1.28364,0,0,1.28364,-768.195,-58.5345)">
+                <circle cx="647.655" cy="192" r="32" style="fill:none;stroke:rgb(210,193,253);stroke-width:6.23px;"/>
+            </g>
+        </g>
+    </g>
+</svg>
+
+                <div class="icon-status">
+                
+                  
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3.33331" y="3.33331" width="31.6667" height="31.6667" rx="15.8333" fill="white"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M20 5.00002C11.7157 5.00002 5.00002 11.7157 5.00002 20C5.00002 28.2843 11.7157 35 20 35C28.2843 35 35 28.2843 35 20C35 11.7157 28.2843 5.00002 20 5.00002ZM1.66669 20C1.66669 9.8748 9.8748 1.66669 20 1.66669C30.1252 1.66669 38.3334 9.8748 38.3334 20C38.3334 30.1252 30.1252 38.3334 20 38.3334C9.8748 38.3334 1.66669 30.1252 1.66669 20Z" fill="#CBCACE"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8333 20C10.8333 19.0795 11.5795 18.3333 12.5 18.3333H26.6666C27.5871 18.3333 28.3333 19.0795 28.3333 20C28.3333 20.9205 27.5871 21.6666 26.6666 21.6666H12.5C11.5795 21.6666 10.8333 20.9205 10.8333 20Z" fill="#CBCACD"/>
+        </svg>
+    
+                
+                </div>
+			</div>
+			<span class="h4">Similarity Filter</span>
+			<span class="label privacy-level">
+			  Disabled
+			</span>
+		    <span style="flex: 3"></span>
+		</div>
+		<div class="grid__cell py-2">
+		    <div class="grid__cell__row" style="width: 195 px">
+		      <span style="flex: 3.5"></span>
+			  <button data-toggle-singular class="disclosure-toggle grid__cell__row__button" data-for="op_disclosure" title="Show details" aria-expanded="false">
+				<svg style="pointer-events:none;" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+				  <path fill-rule="evenodd" clip-rule="evenodd" d="M9 2.25C5.27208 2.25 2.25 5.27208 2.25 9C2.25 12.7279 5.27208 15.75 9 15.75C12.7279 15.75 15.75 12.7279 15.75 9C15.75 5.27208 12.7279 2.25 9 2.25ZM0.75 9C0.75 4.44365 4.44365 0.75 9 0.75C13.5563 0.75 17.25 4.44365 17.25 9C17.25 13.5563 13.5563 17.25 9 17.25C4.44365 17.25 0.75 13.5563 0.75 9Z" fill="currentColor" />
+				  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.19359 6.01824C8.84445 5.95835 8.48538 6.02396 8.17998 6.20345C7.87458 6.38294 7.64255 6.66472 7.525 6.99888C7.38755 7.38963 6.95936 7.59495 6.56862 7.4575C6.17788 7.32005 5.97255 6.89186 6.11 6.50112C6.3451 5.83279 6.80915 5.26922 7.41995 4.91025C8.03076 4.55128 8.74889 4.42006 9.44718 4.53983C10.1455 4.6596 10.7788 5.02264 11.2351 5.56465C11.6912 6.10654 11.941 6.79236 11.94 7.50069C11.9398 8.30331 11.5177 8.91677 11.0813 9.33481C10.6448 9.753 10.1273 10.0432 9.76191 10.2182C9.73272 10.2322 9.71152 10.2522 9.69977 10.2695C9.6943 10.2775 9.69186 10.2834 9.69085 10.2866C9.68998 10.2893 9.69 10.2904 9.69 10.2906V10.5C9.69 10.9142 9.35421 11.25 8.94 11.25C8.52579 11.25 8.19 10.9142 8.19 10.5V10.2906C8.19 9.63821 8.60142 9.11092 9.11386 8.86543C9.41119 8.72299 9.76971 8.51412 10.0436 8.2517C10.3175 7.98925 10.44 7.74078 10.44 7.5V7.49888C10.4405 7.14464 10.3157 6.80165 10.0875 6.53065C9.85941 6.25964 9.54273 6.07813 9.19359 6.01824Z" fill="currentColor" />
+				  <path d="M9.75 12.75C9.75 13.1642 9.41421 13.5 9 13.5C8.58579 13.5 8.25 13.1642 8.25 12.75C8.25 12.3358 8.58579 12 9 12C9.41421 12 9.75 12.3358 9.75 12.75Z" fill="currentColor" />
+				</svg>
+			  </button>
+			</div>
+			<div class="icon-wrapper">
+
+<svg width="90" height="90" viewBox="0 0 257 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-824,0)">
+        <g id="Overfitting" transform="matrix(1,0,0,1,824.277,0)">
+            <rect x="0" y="0" width="256" height="256" style="fill:none;"/>
+            <g transform="matrix(1,0,0,1,-824.277,0)">
+                <path d="M850.459,208.701C851.535,210.195 852.169,212.028 852.169,214.008C852.169,214.999 852.01,215.953 851.716,216.847C849.593,217.599 847.307,218.008 844.924,218.008L843.068,218.008C840.86,218.008 839.068,216.216 839.068,214.008C839.068,211.8 840.86,210.008 843.068,210.008C843.068,210.008 844.924,210.008 844.925,210.008C846.915,210.008 848.795,209.537 850.459,208.701ZM866.385,67.773C860.892,71.415 857.269,77.655 857.269,84.74C857.269,112.759 857.269,169.644 857.269,197.663C857.269,201.051 855.905,204.12 853.695,206.35C855.251,208.504 856.169,211.15 856.169,214.008C856.169,214.217 856.164,214.425 856.154,214.63C861.647,210.988 865.269,204.749 865.269,197.663C865.269,169.644 865.269,112.759 865.269,84.74C865.269,81.352 866.634,78.283 868.844,76.053C867.288,73.899 866.37,71.253 866.37,68.395C866.37,68.186 866.375,67.978 866.385,67.773ZM908.485,172.295C910.186,173.148 912.078,173.605 914.018,173.605C914.018,173.605 917.731,173.605 917.731,173.605C919.721,173.605 921.601,173.134 923.265,172.297C924.341,173.792 924.975,175.625 924.975,177.605C924.975,178.596 924.816,179.55 924.522,180.444C922.399,181.195 920.113,181.605 917.731,181.605C916.497,181.605 915.252,181.605 914.018,181.605C911.681,181.605 909.385,181.203 907.224,180.437C906.931,179.545 906.773,178.593 906.773,177.605C906.773,175.624 907.408,173.79 908.485,172.295ZM939.191,104.176C933.698,107.818 930.076,114.058 930.076,121.143C930.076,121.143 930.076,161.26 930.076,161.26C930.076,164.648 928.711,167.717 926.502,169.947C928.058,172.101 928.975,174.747 928.975,177.605C928.975,177.814 928.97,178.022 928.96,178.227C934.454,174.585 938.076,168.345 938.076,161.26C938.076,161.26 938.076,121.143 938.076,121.143C938.076,117.756 939.441,114.686 941.65,112.456C940.094,110.302 939.177,107.657 939.177,104.798C939.177,104.589 939.182,104.382 939.191,104.176ZM892.557,67.775C892.567,67.981 892.572,68.188 892.572,68.395C892.572,71.253 891.655,73.899 890.099,76.053C892.388,78.364 893.673,81.486 893.673,84.74C893.673,105.367 893.673,140.633 893.673,161.26C893.673,166.656 895.816,171.83 899.632,175.646C900.602,176.616 901.66,177.478 902.788,178.225C902.778,178.019 902.773,177.812 902.773,177.605C902.773,174.747 903.691,172.101 905.247,169.947C902.958,167.636 901.673,164.514 901.673,161.26C901.673,140.633 901.673,105.367 901.673,84.74C901.673,79.344 899.529,74.17 895.714,70.354C894.743,69.384 893.685,68.522 892.557,67.775ZM1054.1,135.892C1055.8,136.745 1057.69,137.202 1059.63,137.202L1061.49,137.202C1063.69,137.202 1065.49,138.994 1065.49,141.202C1065.49,143.409 1063.69,145.202 1061.49,145.202C1061.49,145.202 1060.77,145.202 1059.63,145.202C1057.29,145.202 1055,144.8 1052.84,144.034C1052.54,143.142 1052.39,142.19 1052.39,141.202C1052.39,139.221 1053.02,137.387 1054.1,135.892ZM996.07,135.892C997.147,137.387 997.781,139.221 997.781,141.202C997.781,142.19 997.623,143.142 997.331,144.034C995.17,144.8 992.874,145.202 990.537,145.202L986.824,145.202C984.442,145.202 982.155,144.792 980.033,144.04C979.739,143.147 979.58,142.193 979.58,141.202C979.58,139.222 980.214,137.388 981.289,135.894C982.954,136.731 984.834,137.202 986.824,137.202C986.824,137.202 990.537,137.202 990.537,137.202C992.477,137.202 994.369,136.745 996.07,135.892ZM965.363,104.176C965.373,104.382 965.378,104.589 965.378,104.798C965.378,107.657 964.461,110.302 962.905,112.456C965.114,114.686 966.479,117.756 966.479,121.143C966.479,121.143 966.479,124.857 966.479,124.857C966.479,131.942 970.101,138.182 975.595,141.824C975.585,141.618 975.58,141.411 975.58,141.202C975.58,138.343 976.497,135.698 978.053,133.544C975.844,131.314 974.479,128.244 974.479,124.857C974.479,124.857 974.479,121.143 974.479,121.143C974.479,114.058 970.857,107.818 965.363,104.176ZM1038.17,31.372C1038.18,31.578 1038.18,31.785 1038.18,31.992C1038.18,34.85 1037.27,37.496 1035.71,39.65C1038,41.961 1039.29,45.083 1039.29,48.337C1039.29,68.963 1039.29,104.23 1039.29,124.857C1039.29,130.252 1041.43,135.427 1045.24,139.243C1046.21,140.213 1047.27,141.075 1048.4,141.821C1048.39,141.616 1048.39,141.409 1048.39,141.202C1048.39,138.343 1049.3,135.698 1050.86,133.544C1048.57,131.233 1047.29,128.111 1047.29,124.857C1047.29,104.23 1047.29,68.963 1047.29,48.337C1047.29,42.941 1045.14,37.766 1041.33,33.951C1040.36,32.981 1039.3,32.119 1038.17,31.372ZM1012,31.372C1010.87,32.119 1009.81,32.981 1008.84,33.951C1005.03,37.766 1002.88,42.941 1002.88,48.337C1002.88,68.963 1002.88,104.23 1002.88,124.857C1002.88,128.111 1001.6,131.233 999.308,133.544C1000.86,135.698 1001.78,138.343 1001.78,141.202C1001.78,141.409 1001.78,141.616 1001.77,141.821C1002.89,141.075 1003.95,140.213 1004.92,139.243C1008.74,135.427 1010.88,130.252 1010.88,124.857C1010.88,104.23 1010.88,68.963 1010.88,48.337C1010.88,45.083 1012.17,41.961 1014.46,39.65C1012.9,37.496 1011.98,34.85 1011.98,31.992C1011.98,31.785 1011.99,31.578 1012,31.372ZM943.63,101.96C945.752,101.208 948.039,100.798 950.421,100.798C951.655,100.798 952.9,100.798 954.134,100.798C956.516,100.798 958.803,101.208 960.925,101.96C961.219,102.853 961.378,103.807 961.378,104.798C961.378,106.778 960.745,108.612 959.669,110.106C958.004,109.269 956.124,108.798 954.134,108.798C954.134,108.798 950.421,108.798 950.421,108.798C948.431,108.798 946.55,109.269 944.886,110.106C943.81,108.612 943.177,106.778 943.177,104.798C943.177,103.807 943.335,102.853 943.63,101.96ZM870.823,65.556C872.946,64.805 875.232,64.395 877.614,64.395C878.848,64.395 880.094,64.395 881.328,64.395C883.665,64.395 885.96,64.797 888.121,65.563C888.414,66.455 888.572,67.407 888.572,68.395C888.572,70.376 887.938,72.21 886.861,73.705C885.159,72.852 883.267,72.395 881.328,72.395C881.328,72.395 877.615,72.395 877.614,72.395C875.624,72.395 873.744,72.866 872.08,73.703C871.004,72.208 870.37,70.375 870.37,68.395C870.37,67.404 870.529,66.45 870.823,65.556ZM1016.43,29.16C1018.6,28.394 1020.89,27.992 1023.23,27.992C1024.46,27.992 1025.71,27.992 1026.94,27.992C1029.28,27.992 1031.57,28.394 1033.73,29.16C1034.03,30.052 1034.18,31.004 1034.18,31.992C1034.18,33.973 1033.55,35.807 1032.47,37.302C1030.77,36.448 1028.88,35.992 1026.94,35.992C1026.94,35.992 1023.23,35.992 1023.23,35.992C1021.29,35.992 1019.4,36.448 1017.69,37.302C1016.62,35.807 1015.98,33.973 1015.98,31.992C1015.98,31.004 1016.14,30.052 1016.43,29.16Z" style="fill:rgb(210,193,253);"/>
+            </g>
+            <g transform="matrix(2.90011,0,0,2.90011,-1202.58,-270.711)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+            <g transform="matrix(2.90011,0,0,2.90011,-1166.17,-416.324)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+            <g transform="matrix(2.90011,0,0,2.90011,-1129.77,-307.115)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+            <g transform="matrix(2.90011,0,0,2.90011,-1093.37,-379.921)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+            <g transform="matrix(2.90011,0,0,2.90011,-1056.96,-343.518)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+            <g transform="matrix(2.90011,0,0,2.90011,-1020.56,-452.727)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+            <g transform="matrix(2.90011,0,0,2.90011,-984.157,-343.518)">
+                <circle cx="421.145" cy="167.138" r="3.138" style="fill:rgb(121,66,250);"/>
+            </g>
+        </g>
+    </g>
+</svg>
+
+                <div class="icon-status">
+                
+                  
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3.33331" y="3.33331" width="31.6667" height="31.6667" rx="15.8333" fill="white"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M20 5.00002C11.7157 5.00002 5.00002 11.7157 5.00002 20C5.00002 28.2843 11.7157 35 20 35C28.2843 35 35 28.2843 35 20C35 11.7157 28.2843 5.00002 20 5.00002ZM1.66669 20C1.66669 9.8748 9.8748 1.66669 20 1.66669C30.1252 1.66669 38.3334 9.8748 38.3334 20C38.3334 30.1252 30.1252 38.3334 20 38.3334C9.8748 38.3334 1.66669 30.1252 1.66669 20Z" fill="#CBCACE"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8333 20C10.8333 19.0795 11.5795 18.3333 12.5 18.3333H26.6666C27.5871 18.3333 28.3333 19.0795 28.3333 20C28.3333 20.9205 27.5871 21.6666 26.6666 21.6666H12.5C11.5795 21.6666 10.8333 20.9205 10.8333 20Z" fill="#CBCACD"/>
+        </svg>
+    
+                
+                </div>
+			</div>
+			<span class="h4">Overfitting Prevention</span>
+			<span class="label privacy-level">
+			  Disabled
+			</span>
+		    <span style="flex: 3"></span>
+		</div>
+		<div class="grid__cell py-2">
+		    <div class="grid__cell__row" style="width: 195 px">
+		      <span style="flex: 3.5"></span>
+			  <button data-toggle-singular class="disclosure-toggle grid__cell__row__button" data-for="dp_disclosure" title="Show details" aria-expanded="false">
+				<svg style="pointer-events:none;" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+				  <path fill-rule="evenodd" clip-rule="evenodd" d="M9 2.25C5.27208 2.25 2.25 5.27208 2.25 9C2.25 12.7279 5.27208 15.75 9 15.75C12.7279 15.75 15.75 12.7279 15.75 9C15.75 5.27208 12.7279 2.25 9 2.25ZM0.75 9C0.75 4.44365 4.44365 0.75 9 0.75C13.5563 0.75 17.25 4.44365 17.25 9C17.25 13.5563 13.5563 17.25 9 17.25C4.44365 17.25 0.75 13.5563 0.75 9Z" fill="currentColor" />
+				  <path fill-rule="evenodd" clip-rule="evenodd" d="M9.19359 6.01824C8.84445 5.95835 8.48538 6.02396 8.17998 6.20345C7.87458 6.38294 7.64255 6.66472 7.525 6.99888C7.38755 7.38963 6.95936 7.59495 6.56862 7.4575C6.17788 7.32005 5.97255 6.89186 6.11 6.50112C6.3451 5.83279 6.80915 5.26922 7.41995 4.91025C8.03076 4.55128 8.74889 4.42006 9.44718 4.53983C10.1455 4.6596 10.7788 5.02264 11.2351 5.56465C11.6912 6.10654 11.941 6.79236 11.94 7.50069C11.9398 8.30331 11.5177 8.91677 11.0813 9.33481C10.6448 9.753 10.1273 10.0432 9.76191 10.2182C9.73272 10.2322 9.71152 10.2522 9.69977 10.2695C9.6943 10.2775 9.69186 10.2834 9.69085 10.2866C9.68998 10.2893 9.69 10.2904 9.69 10.2906V10.5C9.69 10.9142 9.35421 11.25 8.94 11.25C8.52579 11.25 8.19 10.9142 8.19 10.5V10.2906C8.19 9.63821 8.60142 9.11092 9.11386 8.86543C9.41119 8.72299 9.76971 8.51412 10.0436 8.2517C10.3175 7.98925 10.44 7.74078 10.44 7.5V7.49888C10.4405 7.14464 10.3157 6.80165 10.0875 6.53065C9.85941 6.25964 9.54273 6.07813 9.19359 6.01824Z" fill="currentColor" />
+				  <path d="M9.75 12.75C9.75 13.1642 9.41421 13.5 9 13.5C8.58579 13.5 8.25 13.1642 8.25 12.75C8.25 12.3358 8.58579 12 9 12C9.41421 12 9.75 12.3358 9.75 12.75Z" fill="currentColor" />
+				</svg>
+			  </button>
+			</div>
+			<div class="icon-wrapper">
+
+<svg width="90" height="90" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <rect id="Differential-Privacy" serif:id="Differential Privacy" x="0" y="0" width="256" height="256" style="fill:none;"/>
+    <g id="Differential-Privacy1" serif:id="Differential Privacy">
+        <path d="M135.03,128.528C133.673,132.179 132.255,135.771 130.781,139.298C138.299,157.095 147.254,173.148 156.914,186.508C175.585,212.328 197.117,228 216,228C218.208,228 220,226.208 220,224C220,223.202 219.766,222.459 219.363,221.835C218.504,221.271 217.647,220.686 216.791,220.078C216.535,220.027 216.271,220 216,220C199,220 180.205,205.065 163.397,181.82C152.69,167.013 142.884,148.791 135.03,128.528ZM34.935,218.786C35.836,217.738 37.004,216.927 38.332,216.457C48.209,209.332 58.055,199.135 67.221,186.514C87.565,158.5 104.821,118.64 112.186,75.701C114.589,89.801 118.053,103.569 122.342,116.7C123.858,112.296 125.277,107.809 126.59,103.254C120.195,80.596 116.396,56.32 116.396,32C116.396,30.939 115.975,29.922 115.225,29.172C114.919,28.865 114.261,28.249 113.029,28.049C112.933,28.033 112.556,28.019 112.272,28.011C111.669,27.968 111.052,28.063 110.469,28.304C108.975,28.924 108,30.382 108,32C108,88.913 87.056,145.586 60.747,181.813C43.863,205.063 25.003,220 8,220C5.792,220 4,221.792 4,224C4,226.208 5.792,228 8,228C16.59,228 25.742,224.756 34.935,218.786Z" style="fill:rgb(210,193,253);"/>
+        <g transform="matrix(0.8,0,0,1,42.6,0)">
+            <path d="M-2,224C54.065,224 128,128.346 128,32C128,30.213 128,30.213 128,32C128,128.346 201.935,224 258,224" style="fill:none;stroke:rgb(121,66,250);stroke-width:8.83px;"/>
+        </g>
+    </g>
+</svg>
+
+                <div class="icon-status">
+                
+                  
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3.33331" y="3.33331" width="31.6667" height="31.6667" rx="15.8333" fill="white"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M20 5.00002C11.7157 5.00002 5.00002 11.7157 5.00002 20C5.00002 28.2843 11.7157 35 20 35C28.2843 35 35 28.2843 35 20C35 11.7157 28.2843 5.00002 20 5.00002ZM1.66669 20C1.66669 9.8748 9.8748 1.66669 20 1.66669C30.1252 1.66669 38.3334 9.8748 38.3334 20C38.3334 30.1252 30.1252 38.3334 20 38.3334C9.8748 38.3334 1.66669 30.1252 1.66669 20Z" fill="#CBCACE"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.8333 20C10.8333 19.0795 11.5795 18.3333 12.5 18.3333H26.6666C27.5871 18.3333 28.3333 19.0795 28.3333 20C28.3333 20.9205 27.5871 21.6666 26.6666 21.6666H12.5C11.5795 21.6666 10.8333 20.9205 10.8333 20Z" fill="#CBCACD"/>
+        </svg>
+    
+                
+                </div>
+			</div>
+			<span class="h4">Differential Privacy</span>
+			<span class="label privacy-level">
+			  Disabled
+			</span>
+		    <span style="flex: 3"></span>
+		</div>
+	  </div>
+	  <div>
+		<div id="of_disclosure" class="disclosure-message__wrap" hidden>
+		    
+<p class="disclosure-message">
+The Outlier privacy filter ensures that no synthetic record is an outlier with respect to the training dataset. 
+Outliers revealed in the synthetic dataset can be exploited by Membership Inference Attacks, Attribute Disclosure 
+and a wide variety of other adversarial attacks. They are a serious privacy risk. The Outlier Filter is enabled 
+by the "privacy_filters.outliers" configuration setting. A value of "medium" will filter out any synthetic record 
+that has a very high likelihood of being an outlier. A value of "high" will filter out any synthetic record that 
+has a medium to high likelihood of being an outlier.
+
+		</div>
+		<div id="sf_disclosure" class="disclosure-message__wrap" hidden>
+		    
+<p class="disclosure-message">
+The Similarity privacy filter ensures that no synthetic record is overly similar to a training record. Overly 
+similar training records can be a severe privacy risk as adversarial attacks commonly exploit such records to 
+gain insights into the original data.  The Similarity Filter is enabled by the "privacy_filters.similarity" 
+configuration setting. A value of "medium" will filter out any synthetic record that is an exact duplicate of a 
+training record. A value of "high" will filter out any synthetic record that is 99% similar or more to a 
+training record.
+    
+		</div>
+		<div id="op_disclosure" class="disclosure-message__wrap" hidden>
+		    
+<p class="disclosure-message">
+The Overfitting Prevention privacy mechanism ensures that the synthetic model will stop training before it has a
+chance to overfit. When a model is overfit, it will start to memorize the training data as opposed to learning
+generalized patterns in the data. This is a severe privacy risk as overfit models are commonly exploited by
+adversaries seeking to gain insights into the original data.
+
+		</div>
+		<div id="dp_disclosure" class="disclosure-message__wrap" hidden>
+		    
+<p class="disclosure-message">
+Differential Privacy ensures that no individual training record can unduly influence the output of a synthetic 
+model. It is very effective at preventing the generation of records that are overly similar to the training 
+set and at ensuring an even distribution of values, though it can result in a modest degradation of the SQS 
+utility score. Differential privacy is best suited to larger datasets (typically 50K rows or more) where 
+probabilistic privacy guarantees are required.
+    
+		</div>
+	  </div>
+    </section>
+    
+
+
+    
+    <section class=test-section-training-field-overview>
+      <div class="grid__cell__row">
+        <h2>Training field overview&nbsp;</h2>
+		<button data-toggle-singular class="disclosure-toggle grid__cell__row__button" data-for="training_field_overview_disclosure" title="Show details" aria-expanded="false">
+			<svg style="pointer-events:none;" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M9 2.25C5.27208 2.25 2.25 5.27208 2.25 9C2.25 12.7279 5.27208 15.75 9 15.75C12.7279 15.75 15.75 12.7279 15.75 9C15.75 5.27208 12.7279 2.25 9 2.25ZM0.75 9C0.75 4.44365 4.44365 0.75 9 0.75C13.5563 0.75 17.25 4.44365 17.25 9C17.25 13.5563 13.5563 17.25 9 17.25C4.44365 17.25 0.75 13.5563 0.75 9Z" fill="currentColor" />
+				<path fill-rule="evenodd" clip-rule="evenodd" d="M9.19359 6.01824C8.84445 5.95835 8.48538 6.02396 8.17998 6.20345C7.87458 6.38294 7.64255 6.66472 7.525 6.99888C7.38755 7.38963 6.95936 7.59495 6.56862 7.4575C6.17788 7.32005 5.97255 6.89186 6.11 6.50112C6.3451 5.83279 6.80915 5.26922 7.41995 4.91025C8.03076 4.55128 8.74889 4.42006 9.44718 4.53983C10.1455 4.6596 10.7788 5.02264 11.2351 5.56465C11.6912 6.10654 11.941 6.79236 11.94 7.50069C11.9398 8.30331 11.5177 8.91677 11.0813 9.33481C10.6448 9.753 10.1273 10.0432 9.76191 10.2182C9.73272 10.2322 9.71152 10.2522 9.69977 10.2695C9.6943 10.2775 9.69186 10.2834 9.69085 10.2866C9.68998 10.2893 9.69 10.2904 9.69 10.2906V10.5C9.69 10.9142 9.35421 11.25 8.94 11.25C8.52579 11.25 8.19 10.9142 8.19 10.5V10.2906C8.19 9.63821 8.60142 9.11092 9.11386 8.86543C9.41119 8.72299 9.76971 8.51412 10.0436 8.2517C10.3175 7.98925 10.44 7.74078 10.44 7.5V7.49888C10.4405 7.14464 10.3157 6.80165 10.0875 6.53065C9.85941 6.25964 9.54273 6.07813 9.19359 6.01824Z" fill="currentColor" />
+				<path d="M9.75 12.75C9.75 13.1642 9.41421 13.5 9 13.5C8.58579 13.5 8.25 13.1642 8.25 12.75C8.25 12.3358 8.58579 12 9 12C9.41421 12 9.75 12.3358 9.75 12.75Z" fill="currentColor" />
+			</svg>
+		</button>
+      </div>
+	  <div id="training_field_overview_disclosure" class="disclosure-message__wrap" hidden>
+	      
+<p class="disclosure-message">
+The high level Field Distribution Stability score is computed by taking the average of the individual Field 
+Distribution Stability scores, shown in the below table. Distributional stability is applicable to numeric and 
+categorical fields, but not highly unique strings. To better understand a field's Distribution Stability score, 
+click on the field name to be taken to a graph comparing the training and synthetic distributions.
+<p class="disclosure-message">
+The below table also shows the count of unique and missing field values, the average length of each field, as well
+as its datatype.  When a dataset contains a large number of highly unique fields, or a large amount of missing data,
+these characteristics can impede the model's ability to accurately learn the statistical structure of the data.
+Exceptionally long fields can also have the same impact.  
+<a href="https://docs.gretel.ai/reference/synthetics/tips-improve-synthetic-data-accuracy"  target=”_blank” rel=”noopener”>Read here</a> 
+for advice on how best to handle fields like these.
+    
+	  </div>
+      <div>
+        <table>
+          <tr>
+            <th>Field</th>
+            <th>Unique</th>
+            <th>Missing</th>
+            <th>Ave. Length</th>
+            <th>Type</th>
+            <th>Distribution Stability</th>
+          </tr>
+          
+          <tr>
+            
+            <td>Visit_Name</td>
+			
+            <td class="tnum">10</td>
+            <td class="tnum">0</td>
+            <td class="tnum">13.20</td>
+            <td>Other</td>
+            
+			<td>N/A</td>
+			
+          </tr>
+          
+        </table>
+      </div>
+    </section>
+    
+
+
+    
+    <section class="break test-section-correlation">
+      <h2>Training and Synthetic Data Correlation</h2>
+      <figure>
+        <div>                            <div id="dba91bdb-b731-4a1a-b2df-90f416570d96" class="plotly-graph-div" style="height:400px; width:900px;"></div>            <script type="text/javascript">                                    window.PLOTLYENV=window.PLOTLYENV || {};                                    if (document.getElementById("dba91bdb-b731-4a1a-b2df-90f416570d96")) {                    Plotly.newPlot(                        "dba91bdb-b731-4a1a-b2df-90f416570d96",                        [{"coloraxis":"coloraxis","name":"Training Correlations","x":["Visit_Name"],"xgap":1,"y":["Visit_Name"],"ygap":1,"z":[[1.0]],"type":"heatmap","xaxis":"x","yaxis":"y","hoverinfo":"text","text":[["x: Visit_Name<br>y: Visit_Name<br>Train correlation: 1.0<br>Synthetic correlation: 1.0<br>Correlation difference: 0.0"]]},{"coloraxis":"coloraxis","name":"Synthetic Correlations","x":["Visit_Name"],"xgap":1,"y":["Visit_Name"],"ygap":1,"z":[[1.0]],"type":"heatmap","xaxis":"x2","yaxis":"y","hoverinfo":"text","text":[["x: Visit_Name<br>y: Visit_Name<br>Train correlation: 1.0<br>Synthetic correlation: 1.0<br>Correlation difference: 0.0"]]},{"coloraxis":"coloraxis","name":"Difference of Correlations","x":["Visit_Name"],"xgap":1,"y":["Visit_Name"],"ygap":1,"z":[[0.0]],"type":"heatmap","xaxis":"x3","yaxis":"y","hoverinfo":"text","text":[["x: Visit_Name<br>y: Visit_Name<br>Train correlation: 1.0<br>Synthetic correlation: 1.0<br>Correlation difference: 0.0"]]}],                        {"template":{"data":{"histogram2dcontour":[{"type":"histogram2dcontour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"choropleth":[{"type":"choropleth","colorbar":{"outlinewidth":0,"ticks":""}}],"histogram2d":[{"type":"histogram2d","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmap":[{"type":"heatmap","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"heatmapgl":[{"type":"heatmapgl","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"contourcarpet":[{"type":"contourcarpet","colorbar":{"outlinewidth":0,"ticks":""}}],"contour":[{"type":"contour","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"surface":[{"type":"surface","colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]}],"mesh3d":[{"type":"mesh3d","colorbar":{"outlinewidth":0,"ticks":""}}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"parcoords":[{"type":"parcoords","line":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolargl":[{"type":"scatterpolargl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"scattergeo":[{"type":"scattergeo","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterpolar":[{"type":"scatterpolar","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"scattergl":[{"type":"scattergl","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatter3d":[{"type":"scatter3d","line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattermapbox":[{"type":"scattermapbox","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scatterternary":[{"type":"scatterternary","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"scattercarpet":[{"type":"scattercarpet","marker":{"colorbar":{"outlinewidth":0,"ticks":""}}}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"white","linecolor":"white","minorgridcolor":"white","startlinecolor":"#2a3f5f"},"type":"carpet"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}],"barpolar":[{"marker":{"line":{"color":"#E5ECF6","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"pie":[{"automargin":true,"type":"pie"}]},"layout":{"autotypenumbers":"strict","colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"hovermode":"closest","hoverlabel":{"align":"left"},"paper_bgcolor":"white","plot_bgcolor":"#E5ECF6","polar":{"bgcolor":"#E5ECF6","angularaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"radialaxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"ternary":{"bgcolor":"#E5ECF6","aaxis":{"gridcolor":"white","linecolor":"white","ticks":""},"baxis":{"gridcolor":"white","linecolor":"white","ticks":""},"caxis":{"gridcolor":"white","linecolor":"white","ticks":""}},"coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]]},"xaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"yaxis":{"gridcolor":"white","linecolor":"white","ticks":"","title":{"standoff":15},"zerolinecolor":"white","automargin":true,"zerolinewidth":2},"scene":{"xaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"yaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2},"zaxis":{"backgroundcolor":"#E5ECF6","gridcolor":"white","linecolor":"white","showbackground":true,"ticks":"","zerolinecolor":"white","gridwidth":2}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"geo":{"bgcolor":"white","landcolor":"#E5ECF6","subunitcolor":"white","showland":true,"showlakes":true,"lakecolor":"white"},"title":{"x":0.05},"mapbox":{"style":"light"}}},"xaxis":{"anchor":"y","domain":[0.0,0.2888888888888889],"visible":false,"showticklabels":false},"yaxis":{"anchor":"x","domain":[0.0,1.0],"visible":false,"dtick":1,"showticklabels":false},"xaxis2":{"anchor":"y2","domain":[0.35555555555555557,0.6444444444444445],"visible":false,"showticklabels":false},"yaxis2":{"anchor":"x2","domain":[0.0,1.0],"matches":"y","showticklabels":false},"xaxis3":{"anchor":"y3","domain":[0.7111111111111111,1.0],"visible":false,"showticklabels":false},"yaxis3":{"anchor":"x3","domain":[0.0,1.0],"matches":"y","showticklabels":false},"annotations":[{"font":{"size":16},"showarrow":false,"text":"Training Correlations","x":0.14444444444444446,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"Synthetic Correlations","x":0.5,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"Correlation Difference","x":0.8555555555555556,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"}],"coloraxis":{"colorscale":[[0.0,"#E8F3C6"],[0.25,"#94E2BA"],[0.5,"#31B8C0"],[0.75,"#4F78B3"],[1.0,"#76137F"]],"cmax":1.0,"cmin":0},"showlegend":false,"height":400,"width":900},                        {"responsive": true}                    )                };                            </script>        </div>
+      </figure>
+    </section>
+    
+
+
+    
+
+
+    
+
+
+    <footer>
+      <p>
+        Copyright © 2024 Gretel Labs, Inc. All rights reserved.
+      </p>
+    </footer>
+
+    </div>
+    <script>
+        /* Handles the show/hide disclosure logic.
+ * This code calculates the X offset of both the trigger
+ * and disclosure elements and uses a CSS clip path to draw
+ * a pointer directly to the trigger element
+ *
+ * Supported data attributs:
+ * data-toggle -- marks this element as the control to open/close the target.
+ *     The state of other targets is ignored.
+ * data-toggle-singular -- marks this element as the control to open/close the target.
+ *     Clicking this control will ALSO close any other open data-toggle-singluar targets.
+ * data-for -- the target of "this" control that gets opened/closed, uses css id.
+ * data-expanded -- Inner HTML text for the control when the target is expanded.
+ * data-notexpanded -- Ditto, but for target hidden.  Use these two for a
+ *     "Show More/Show Less" link.
+ */
+function showDisclosure(id) {
+    let disclosure = document.getElementById(id);
+    if (disclosure && disclosure.hasAttribute("hidden")) {
+        disclosure.removeAttribute("hidden");
+    }
+}
+
+function hideDisclosure(id) {
+    let disclosure = document.getElementById(id);
+    if (disclosure && !disclosure.hasAttribute("hidden")) {
+        disclosure.setAttribute("hidden", true);
+    }
+}
+
+function handleEvent(event) {
+    let { currentTarget } = event;
+    let target = currentTarget;
+
+    // If there are multiple toggles for this disclosure, we will need to update
+    // the attrs on all of them.  Use this selector to find them.
+    const forSelector = "[data-for='" + target.dataset.for + "']";
+
+    // "this" disclosure is currently open, close it.
+    if (target.getAttribute('aria-expanded') === "true") {
+        const togglesFor = document.querySelectorAll(forSelector);
+        togglesFor.forEach(toggleFor => {
+            // Flip the 'aria-expanded' attr for all the controls for "this" disclosure.
+            toggleFor.setAttribute('aria-expanded', false);
+            // If there is text for this control's closed state, apply it.
+            if (toggleFor.hasAttribute("data-notexpanded")) {
+                toggleFor.innerHTML = toggleFor.dataset.notexpanded;
+            }
+        });
+
+        // Finally, hide the disclosure text itself.
+        hideDisclosure(target.dataset.for);
+    } else {
+        // Same thing, but open a currently closed disclosure.
+        const togglesFor = document.querySelectorAll(forSelector);
+        togglesFor.forEach(toggleFor => {
+            toggleFor.setAttribute('aria-expanded', true);
+            if (toggleFor.hasAttribute("data-expanded")) {
+                toggleFor.innerHTML = toggleFor.dataset.expanded;
+            }
+        });
+
+        showDisclosure(target.dataset.for);
+    }
+}
+
+function toggleDisclosure(event) {
+    /* Toggle "this" disclosure only, don't worry about any others. */
+    event.preventDefault();
+    handleEvent(event);
+}
+
+function toggleDisclosureSingular(event) {
+    /* Toggle "this" disclosure but also close any others that are currently open. */
+    event.preventDefault();
+
+    togglesSingular.forEach(toggle => {
+        // Skip the control firing the event, as well as any other controls affecting the same disclosure text.
+        if (toggle === event.currentTarget || toggle.dataset.for === event.currentTarget.dataset.for) {
+            return;
+        }
+        toggle.setAttribute('aria-expanded', false);
+        if (toggle.dataset.for) hideDisclosure(toggle.dataset.for);
+
+        // We have an open/close link whose text we want to change depending on state.
+        // Use data-notexpanded and data-expanded attrs to supply the opened/closed text.
+        if (toggle.dataset.notexpanded) {
+            toggle.innerHTML = toggle.dataset.notexpanded;
+        }
+    });
+
+    handleEvent(event);
+}
+
+function eraseMessage (){
+    setTimeout(() => {
+        const elem = document.getElementById("copied_message");
+        document.getElementById("copied_message").innerHTML = "" 
+      }, 2000) 
+}
+
+function copyModelID() {
+    // Get the model id field
+    var model_text = document.getElementById("model_uid")
+    navigator.clipboard.writeText(model_text.textContent.split(" "));
+
+    document.getElementById("copied_message").innerHTML = "Copied" 
+
+    eraseMessage();
+}
+
+const toggles = document.querySelectorAll('[data-toggle]');
+toggles.forEach(toggle => { toggle.onclick = toggleDisclosure });
+
+const togglesSingular = document.querySelectorAll('[data-toggle-singular]');
+togglesSingular.forEach(toggle => { toggle.onclick = toggleDisclosureSingular });
+    </script>
+</body>
+</html>

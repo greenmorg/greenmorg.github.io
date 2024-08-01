@@ -29,6 +29,9 @@ The dataset incorporates a variety of data types, including:
 - Float for financial figures 
 - Datetime for time-related fields 
 
+Additionally, we have created a simplified version of this dataset tailored for a MySQL database. This version is streamlined, utilizing IDs as primary and foreign keys to maintain relational integrity. This simplified dataset is specifically designed for use with the Gretel workflow, enabling more efficient testing and data generation within a relational database context.
+
+![Medical Db](/assets/dataset_db.png)
 
 ## Techniques Explored  
 
@@ -94,9 +97,28 @@ We set up Gretel to manage data connections and workflows as follows:
 
 - Data Duplication: Ensuring the uniqueness of generated data can be challenging, and additional validation may be necessary. 
 
-#### Results 
-{results}
- 
+#### Results evaluation
+
+**General evaluation**
+- [Relational Report](/htmls/relational_report.html) - A comprehensive overview of the relational structure and integrity of the dataset.
+
+**Cross-table evaluation**
+- [Synthetics Cross Table Evaluation: Branch Expenses](/htmls/synthetics_cross_table_evaluation_Branch_Expenses.html) 
+- [Synthetics Cross Table Evaluation: Doctors](/htmls/synthetics_cross_table_evaluation_Doctors.html)
+- [Synthetics Cross Table Evaluation: Doctors Contacts](/htmls/synthetics_cross_table_evaluation_Doctors_Contacts.html) 
+- [Synthetics Cross Table Evaluation: Patients Visits](/htmls/synthetics_cross_table_evaluation_Patients_Visits.html) 
+- [Synthetics Cross Table Evaluation: Specializations](/htmls/synthetics_cross_table_evaluation_Specializations.html) 
+
+**Single-table evaluation**
+- [Synthetics Individual Evaluation: Branches](/htmls/synthetics_individual_evaluation_Branches.html)
+- [Synthetics Individual Evaluation: Branch Expenses](/htmls/synthetics_individual_evaluation_Branch_Expenses.html)
+- [Synthetics Individual Evaluation: Detailed Patients Visits](/htmls/synthetics_individual_evaluation_Detailed_Patients_Visits.html) 
+- [Synthetics Individual Evaluation: Doctors](/htmls/synthetics_individual_evaluation_Doctors.html)
+- [Synthetics Individual Evaluation: Doctors Contacts](/htmls/synthetics_individual_evaluation_Doctors_Contacts.html)
+- [Synthetics Individual Evaluation: Patients](/htmls/synthetics_individual_evaluation_Patients.html)
+- [Synthetics Individual Evaluation: Patients Visits](/htmls/synthetics_individual_evaluation_Patients_Visits.html)
+- [Synthetics Individual Evaluation: Specializations](/htmls/synthetics_individual_evaluation_Specializations.html)
+- [Synthetics Individual Evaluation: Visits Type](/htmls/synthetics_individual_evaluation_Visits_Type.html)
 
 # 3. Langchain synthetic data generation pipeline 
 
@@ -163,6 +185,12 @@ The MultiTableMetadata can be automatically detected from the input DataFrames u
 - The MultiTableMetadata may require manual adjustments to accurately represent the relationships between tables, which can be time-consuming for complex datasets. 
 - The synthesizer's performance may degrade with increasing dataset size and complexity. 
 - The generated synthetic data consists of the same values present in the original tables, albeit rearranged and combined differently. While this approach ensures unique combinations in the synthesized data, it may lack the diversity and realism that comes with generating entirely new values, as seen in language models like GPT, which can create novel and contextually appropriate content. 
+
+# Costs 
+
+**Langchain Synthetic Data Generation Pipeline**
+<br>
+Generating 50 rows of data with 3 columns using GPT-4o model costs approximately $0.19. This translates to a cost of about $0.00127 per cell, where extra prompting consumes 30 tokens.
 
 # Conclusion 
 
