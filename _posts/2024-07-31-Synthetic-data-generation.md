@@ -6,7 +6,8 @@ categories: Synthetic data generation
 ---
 
 ## Objective
-To explore data synthesis techniques for single tables, relational tables, and entire databases, to investigate methods that preserve the statistical properties and structural relationships of the original datasets while ensuring data privacy and protection. As a proof of concept (POC), we implement the synthesis process for a more complex scenario involving relational medical tables. The generated synthetic data should be usable for various applications, including data analysis, model training, and further research endeavors.
+To explore data synthesis techniques for single tables, relational tables, and entire databases, that preserve the statistical properties and structural relationships of the original datasets while ensuring data privacy and protection. ​
+As a proof of concept (POC), we implement the synthesis process for a more complex scenario involving relational medical tables. ​
 
 ## Background and importance of data synthesis 
 
