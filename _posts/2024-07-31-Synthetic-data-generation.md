@@ -46,7 +46,57 @@ The Tab-VAE model presents several advantages over traditional VAE approaches an
 
 # 2. Gretel.ai  
 
-{ } 
+We implemented a synthetic data generation pipeline using Gretel with an AWS-hosted MySQL database. This approach involved connecting to a remote MySQL database on AWS, configuring Gretel for data extraction and synthetic data generation, and managing the entire workflow through Gretel’s API. This showcases how to leverage cloud-based databases in conjunction with synthetic data generation tools. 
+
+#### Implementation 
+
+The implementation of the Gretel synthetic data generation involved several key steps: 
+
+**Data Extraction from AWS MySQL Database**
+
+We connected to a MySQL database hosted on AWS to extract data from various tables. This process involved: 
+
+- Remote Database Connection: Establishing a connection to the AWS-hosted MySQL database to access the data. 
+
+- Data Extraction: Extracting data from each table and storing it in a structured format for further processing. 
+
+**Gretel Configuration** 
+
+We set up Gretel to manage data connections and workflows as follows: 
+
+- Session Initialization: Configured a Gretel session using the API key. 
+
+- Project Creation: Created or retrieved a unique project in Gretel for the synthetic data generation process. 
+
+- AWS MySQL Connection: Registered the AWS MySQL connection in Gretel to facilitate data integration. 
+
+**Workflow Configuration and Execution** 
+
+- We defined and executed a Gretel workflow to generate synthetic data: 
+
+- Workflow Design: Configured the workflow to extract data from the AWS MySQL database and train a synthetic data model using Gretel’s tools. 
+
+- Workflow Execution: Ran the workflow and monitored its progress through Gretel’s logging and reporting features. 
+
+#### Advantages 
+
+- Cloud Integration: The pipeline integrates seamlessly with a cloud-based MySQL database, offering scalability and flexibility. 
+
+- Automation and Monitoring: The automated workflow handles data extraction, model training, and progress monitoring, streamlining the process. 
+
+- Customizable Models: Gretel provides the flexibility to select and configure different models for data synthesis, enhancing the quality of synthetic data. Models included: Gretel ACTGAN - Adversarial model for tabular, structured numerical, high column count data. Gretel Tabular DP - Graph-based model for tabular data with differential privacy. Gretel GPT - Generative pre-trained transformer for natural language text. Gretel DGAN - Adversarial model for time-series data. 
+
+#### Limitations 
+
+- Remote Connection Management: Configuring and managing remote database connections requires careful attention to network and security settings. 
+
+- Processing Time: Generating large volumes of synthetic data can be time-consuming due to the model's computational requirements. 
+
+- Data Duplication: Ensuring the uniqueness of generated data can be challenging, and additional validation may be necessary. 
+
+#### Results 
+{results}
+ 
 
 # 3. Langchain synthetic data generation pipeline 
 
