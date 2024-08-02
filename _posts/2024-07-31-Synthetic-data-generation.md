@@ -188,9 +188,19 @@ The MultiTableMetadata can be automatically detected from the input DataFrames u
 
 # Costs 
 
-**Langchain Synthetic Data Generation Pipeline**
+**Langchain Synthetic Data Generation Pipeline Pricing**
+
 <br>
 Generating 50 rows of data with 3 columns using GPT-4o model costs approximately $0.19. This translates to a cost of about $0.00127 per cell, where extra prompting consumes 30 tokens.
+
+**Gretel.ai Pricing**
+<br>
+
+Gretel.ai offers a flexible pricing model that starts with a free tier, providing 15 free credits per month. These credits are sufficient for generating over 100,000 synthetic records using Gretel Workflows, transforming 2 million records, or detecting PII in over 2 million records. Additional credits cost $2.00 each.
+
+For more extensive usage, Gretel offers a Team plan at $295 per month, with each additional credit priced at $2.20. This plan includes up to 10 concurrent jobs, a 99.5% API availability SLA, and support options including custom SSO.
+
+Enterprise plans are available for organizations needing customized scaling, 24/7 support, and dedicated success engineering. Pricing for these plans is tailored to specific enterprise needs.
 
 # Conclusion 
 
