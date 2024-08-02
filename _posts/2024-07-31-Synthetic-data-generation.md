@@ -29,6 +29,8 @@ The dataset incorporates a variety of data types, including:
 - Float for financial figures 
 - Datetime for time-related fields 
 
+**You can view our dataset** [here](https://greenm.sharepoint.com/sites/ResearchandDevelopment/Shared%20Documents/Forms/AllItems.aspx?id=%2Fsites%2FResearchandDevelopment%2FShared%20Documents%2FDatasets%2FMedical%20datasets%2FDB%20that%20is%20imaginary%20and%20has%20connections&viewid=e2441d17%2D2b54%2D4591%2D839f%2De791788c1e13).
+
 Additionally, we have created a simplified version of this dataset tailored for a MySQL database. This version is streamlined, utilizing IDs as primary and foreign keys to maintain relational integrity. This simplified dataset is specifically designed for use with the Gretel workflow, enabling more efficient testing and data generation within a relational database context.
 
 ![Medical Db](/assets/dataset_db.png)
@@ -204,10 +206,14 @@ Enterprise plans are available for organizations needing customized scaling, 24/
 
 # Conclusion 
 
-In this research, we explored various data synthesis techniques for generating synthetic data from complex, relational datasets. We investigated four distinct approaches: a custom-built Tabular Variational Autoencoder (Tab-VAE), the Gretel.ai platform, the Langchain synthetic data generation pipeline, and the Synthetic Data Vault (SDV) library with its Hierarchical Multi-Agent (HMA) Synthesizer. 
+We explored various data synthesis techniques for generating synthetic data from complex, relational datasets. We investigated four distinct approaches: a custom-built Tabular Variational Autoencoder (Tab-VAE), the Gretel.ai platform, the Langchain synthetic data generation pipeline, and the Synthetic Data Vault (SDV) library with its Hierarchical Multi-Agent (HMA) Synthesizer. 
 
 Our findings reveal several limitations across the different techniques. Non-LLM methods, often struggle with generating truly diverse synthetic data. The synthesized data tends to consist of the same values present in the original tables, albeit rearranged and combined differently. This lack of diversity may limit the realism and utility of the synthetic data for certain applications. 
 
 Moreover, maintaining the connections and relationships between tables remains a challenge across all techniques. The generated synthetic data may not always preserve the relational integrity of the original dataset, which can hinder its usefulness in scenarios that rely on accurate representations of these connections. 
 
 LLM-based techniques like the Langchain pipeline face an additional challenge: the occurrence of repeated rows in the generated data and connections are not always maintained.
+
+---
+<br>
+**You can also view our code** [here](https://github.com/greenmorg/RND-122-Synthetic-data).
