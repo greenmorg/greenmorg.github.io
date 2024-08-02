@@ -15,7 +15,7 @@ Data synthesis refers to the creation of artificial data that mimics the statist
 
 The importance of data synthesis lays in aspects such as privacy protection, data availability, safe testing and development, cost efficiency, as it enables organizations to create realistic datasets without exposing sensitive information, facilitates the generation of data when the real data does not exist or access is limited, supports robust testing and development processes, and reduces costs associated with data acquisition and management. 
 
-## Source Dataset Overview 
+## Dataset overview 
 
 ![Medical Dataset](/assets/Dataset.png)
 
@@ -35,7 +35,7 @@ Additionally, we have created a simplified version of this dataset tailored for 
 
 ![Medical Db](/assets/dataset_db.png)
 
-## Techniques Explored  
+## Techniques explored  
 
 In our research on data synthesis for complex, relational datasets, we selected four distinct approaches, each offering unique features and capabilities. These techniques were chosen to represent a spectrum of methods, from custom-built solutions to ready-made platforms, allowing us to comprehensively evaluate the state of the art in synthetic data generation. 
 
@@ -171,7 +171,7 @@ Synthetic Data Vault (SDV) is a Python library for generating synthetic data tha
 #### Hierarchical Multi-Agent (HMA) Synthesizer 
 The Hierarchical Multi-Agent (HMA) Synthesizer is a ready-made pipeline in the SDV library specifically designed for generating synthetic data for single table and multi-table datasets with complex relationships. It uses a hierarchical approach to model the dependencies between tables and generate consistent synthetic data across the entire dataset. 
 
-#### Multi-Table Data Details 
+#### Multi-Table data details 
 To use the HMA Synthesizer, you need to provide: 
 - A dictionary of DataFrames representing the tables in your dataset. 
 - A MultiTableMetadata object that describes the structure, data types, and relationships between the tables. 
